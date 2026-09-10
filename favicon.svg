@@ -1,0 +1,11 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="32" height="32" rx="8" fill="#0B1016"/>
+<rect width="32" height="32" rx="8" stroke="rgba(255,255,255,0.08)"/>
+<path d="M8 10 H6 V22 H8" stroke="#00FF88" stroke-width="1.3" stroke-linecap="round"/>
+<path d="M26 10 H24 V22 H26" stroke="#00FF88" stroke-width="1.3" stroke-linecap="round"/>
+<g font-family="JetBrains Mono, monospace" font-weight="800" text-anchor="middle" font-size="7.5">
+  <text x="16" y="13" fill="white" letter-spacing="0.12em">CTRL</text>
+  <text x="16" y="20" fill="white" letter-spacing="0.12em">ALT</text>
+  <text x="16" y="27" fill="#00FF88" letter-spacing="0.12em">DET</text>
+</g>
+</svg>
