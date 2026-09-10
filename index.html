@@ -3,13 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CTRLALTDET LLC | Secure The Perimeter. Build The Intelligence.</title>
-<meta name="description" content="CTRLALTDET LLC — Lincoln Park, Michigan-based cybersecurity & AI engineering firm. Offensive security, penetration testing, red teaming, OSINT, and full-stack AI software development by Chief Architect Austin Allen Bale.">
+<title>CTRLALTDET LLC | Secure the Perimeter. Build with Intelligence.</title>
+<meta name="description" content="CTRLALTDET LLC — Lincoln Park, Michigan. Cybersecurity and AI engineering: offensive security, penetration testing, OSINT, and full-stack AI software, led by Austin Allen Bale.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="alternate icon" href="favicon.svg">
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -22,303 +21,284 @@ tailwind.config = {
         mono: ['JetBrains Mono','monospace']
       },
       colors: {
-        cyber: {
-          black: '#040507',
-          surface: '#0B1016',
-          slate: '#121821',
-          green: '#00FF88',
-          greenDim: '#00E67A',
-          greenGlow: 'rgba(0,255,136,0.15)',
-          muted: '#94A3B8'
+        ink: {
+          950: '#070A12',
+          900: '#0B0F1A',
+          850: '#0F1520',
+          800: '#141D2B',
+          700: '#1A2335',
+        },
+        accent: {
+          500: '#10B981',
+          600: '#0E9A6B',
+          soft: '#E6F7F0',
         }
       },
       boxShadow: {
-        glow: '0 0 40px rgba(0,255,136,0.15), 0 0 80px rgba(0,255,136,0.08)',
-        card: '0 8px 32px rgba(0,0,0,0.4)'
+        soft: '0 8px 32px rgba(2,8,23,0.12), 0 1px 3px rgba(2,8,23,0.08)',
+        card: '0 12px 48px rgba(2,8,23,0.18)',
+        glow: '0 0 0 1px rgba(16,185,129,0.08), 0 8px 32px rgba(16,185,129,0.10)'
       }
     }
   }
 }
 </script>
 <style>
-  body { background: #040507; }
-  ::selection { background: #00FF88; color: #040507; }
-  /* Custom scrollbar */
+  body { background: #070A12; color: #E2E8F0; }
+  ::selection { background: #10B981; color: white; }
   ::-webkit-scrollbar { width: 8px; height: 8px; }
-  ::-webkit-scrollbar-track { background: #0B1016; }
-  ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 4px; }
-  ::-webkit-scrollbar-thumb:hover { background: #00FF88; }
-  /* Grid pattern */
-  .grid-pattern {
-    background-image: 
-      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-    background-size: 32px 32px;
+  ::-webkit-scrollbar-track { background: #0B0F1A; }
+  ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 999px; }
+  ::-webkit-scrollbar-thumb:hover { background: #334155; }
+  .grid-subtle {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
   .glass {
-    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255,255,255,0.08);
-  }
-  .glass-strong {
-    background: rgba(18,24,33,0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     border: 1px solid rgba(255,255,255,0.07);
   }
-  .terminal-caret::after {
-    content: '█';
-    animation: blink 1s step-end infinite;
-    margin-left: 2px;
-    color: #00FF88;
+  .glass-strong {
+    background: rgba(18,24,38,0.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.06);
   }
-  @keyframes blink { 0%,50%{opacity:1} 51%,100%{opacity:0} }
-  .noise {
-    position: relative;
-  }
-  .noise::before {
+  .card-hover { transition: all 0.28s cubic-bezier(0.2,0,0.2,1); }
+  .card-hover:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.10); box-shadow: 0 16px 48px rgba(2,8,23,0.22); }
+  .spotlight { position: relative; overflow: hidden; }
+  .spotlight::before{
     content:"";
-    position:absolute;
-    inset:0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events:none;
-    opacity:0.5;
+    position:absolute; inset:-1px;
+    background: radial-gradient(560px circle at var(--mx,50%) var(--my,50%), rgba(16,185,129,0.09), transparent 42%);
+    opacity:0; transition: opacity 0.25s; pointer-events:none; z-index:1;
   }
-  /* Pro motion */
-  @keyframes float { 0%,100% { transform: translateY(0px) } 50% { transform: translateY(-8px) } }
-  @keyframes beam { 0% { transform: translateX(-100%) } 100% { transform: translateX(200%) } }
-  @keyframes shimmer { 0% { background-position: -200% 0 } 100% { background-position: 200% 0 } }
-  .float-slow { animation: float 6s ease-in-out infinite; }
-  .spotlight-card { position: relative; overflow: hidden; }
-  .spotlight-card::before {
-    content:"";
-    position: absolute;
-    inset: -1px;
-    background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%), rgba(0,255,136,0.12), transparent 40%);
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
-    z-index: 1;
-  }
-  .spotlight-card:hover::before { opacity: 1; }
-  .spotlight-card > * { position: relative; z-index: 2; }
-  #heroParticles { filter: contrast(1.1) brightness(1.05); }
-  .glass-strong:hover { border-color: rgba(0,255,136,0.18); box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,255,136,0.08); }
-  .beam::after {
-    content:"";
-    position:absolute;
-    top:0; left:0; height:1px; width:50%;
-    background: linear-gradient(90deg, transparent, rgba(0,255,136,0.8), transparent);
-    animation: beam 3.5s linear infinite;
-    opacity:0.6;
-  }
-  .magnetic { transition: transform 0.2s cubic-bezier(0.2,0,0.2,1); will-change: transform; }
-  @media (prefers-reduced-motion: reduce) {
-    .float-slow, .beam::after { animation: none; }
-    #heroParticles { display:none; }
+  .spotlight:hover::before{ opacity:1; }
+  .spotlight > *{ position:relative; z-index:2; }
+  @keyframes float { 0%,100%{ transform: translateY(0)} 50%{ transform: translateY(-6px)} }
+  .float { animation: float 7s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce){
+    .float{ animation:none; }
+    #heroParticles{ display:none; }
   }
 </style>
 </head>
-<body class="bg-cyber-black text-slate-200 font-sans antialiased selection:bg-cyber-green selection:text-cyber-black">
+<body class="bg-ink-950 text-slate-200 font-sans antialiased selection:bg-accent-500 selection:text-white">
+
 <!-- Scroll progress -->
-<div id="scrollProgress" class="fixed top-0 left-0 h-[2px] bg-gradient-to-r from-cyber-green via-emerald-400 to-cyber-green z-[70] w-0 transition-[width] duration-100 ease-out pointer-events-none"></div>
-<!-- Cursor glow (desktop only) -->
-<div id="cursorGlow" class="fixed top-0 left-0 w-[700px] h-[700px] pointer-events-none -translate-x-1/2 -translate-y-1/2 rounded-full opacity-0 lg:opacity-0 transition-opacity duration-300 z-0 hidden lg:block" style="background: radial-gradient(circle at center, rgba(0,255,136,0.10), rgba(0,255,136,0.04) 30%, transparent 65%); filter: blur(8px);"></div>
+<div id="scrollProgress" class="fixed top-0 left-0 h-[2px] bg-accent-500 z-[70] w-0 transition-[width] duration-100 ease-out pointer-events-none"></div>
 
-<!-- Top accent line -->
-<div class="h-[2px] w-full bg-gradient-to-r from-transparent via-cyber-green to-transparent opacity-60"></div>
+<!-- Cursor glow (subtle, desktop) -->
+<div id="cursorGlow" class="fixed w-[680px] h-[680px] -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none opacity-0 transition-opacity duration-300 z-0 hidden lg:block" style="background: radial-gradient(circle at center, rgba(16,185,129,0.06), transparent 68%); filter: blur(10px);"></div>
 
-<!-- NAVIGATION -->
-<nav class="sticky top-0 z-50 border-b border-white/[0.06] bg-[#040507]/80 backdrop-blur-xl supports-[backdrop-filter]:bg-[#040507]/70">
+<!-- NAV -->
+<nav id="topNav" class="sticky top-0 z-40 border-b border-white/[0.06] bg-ink-950/70 backdrop-blur-xl">
   <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex h-[64px] lg:h-[72px] items-center justify-between gap-6">
-      <!-- Logo -->
+    <div class="flex h-[64px] lg:h-[68px] items-center justify-between gap-6">
       <a href="#" class="flex items-center gap-3 group">
-        <img src="logo-icon.svg" alt="CTRLALTDET LLC" class="h-9 w-9 rounded-[10px] shadow-sm ring-1 ring-white/10 group-hover:ring-cyber-green/30 transition">
+        <img src="logo-icon.svg" alt="CTRLALTDET LLC" class="h-9 w-9 rounded-xl ring-1 ring-white/10 group-hover:ring-white/15 transition">
         <div class="hidden sm:block">
-          <div class="font-display font-bold text-[15px] tracking-tight leading-none text-white">CTRLALTDET <span class="font-normal text-white/60">LLC</span></div>
-          <div class="font-mono text-[10px] tracking-[0.18em] text-cyber-green uppercase">Lincoln Park • MI</div>
+          <div class="font-display font-semibold text-[14.5px] tracking-tight leading-none text-white">CTRLALTDET <span class="font-normal text-white/55">LLC</span></div>
+          <div class="font-mono text-[10px] tracking-[0.14em] text-slate-400 uppercase">Lincoln Park • MI</div>
         </div>
-        <img src="logo.svg" alt="" class="hidden xl:block h-10 ml-2 opacity-0 xl:opacity-100 transition pointer-events-none select-none" aria-hidden="true" style="display:none">
       </a>
-
-      <!-- Desktop nav -->
       <div class="hidden lg:flex items-center gap-1">
-        <a href="#about" class="px-4 py-2 rounded-full text-[13px] font-medium text-slate-400 hover:text-white hover:bg-white/[0.06] transition">About</a>
-        <a href="#products" class="px-4 py-2 rounded-full text-[13px] font-medium text-slate-400 hover:text-white hover:bg-white/[0.06] transition">Products</a>
-        <a href="#services" class="px-4 py-2 rounded-full text-[13px] font-medium text-slate-400 hover:text-white hover:bg-white/[0.06] transition">Services</a>
-        <a href="#podcast" class="px-4 py-2 rounded-full text-[13px] font-medium text-slate-400 hover:text-white hover:bg-white/[0.06] transition">Podcast</a>
-        <a href="#booking" class="px-4 py-2 rounded-full text-[13px] font-medium text-slate-300 hover:text-white hover:bg-white/[0.06] transition">Book</a>
-        <a href="#contact" class="px-4 py-2 rounded-full text-[13px] font-medium text-cyber-green border border-cyber-green/20 hover:bg-cyber-green hover:text-black transition">Contact</a>
+        <a href="#about" class="px-3.5 py-2 rounded-full text-[13px] font-medium text-slate-400 hover:text-white hover:bg-white/[0.06] transition">About</a>
+        <a href="#products" class="px-3.5 py-2 rounded-full text-[13px] font-medium text-slate-400 hover:text-white hover:bg-white/[0.06] transition">Products</a>
+        <a href="#services" class="px-3.5 py-2 rounded-full text-[13px] font-medium text-slate-400 hover:text-white hover:bg-white/[0.06] transition">Services</a>
+        <a href="#podcast" class="px-3.5 py-2 rounded-full text-[13px] font-medium text-slate-400 hover:text-white hover:bg-white/[0.06] transition">Podcast</a>
+        <a href="#booking" class="px-3.5 py-2 rounded-full text-[13px] font-medium text-slate-300 hover:text-white hover:bg-white/[0.06] transition">Book</a>
+        <a href="#contact" class="ml-1 px-4 py-2 rounded-full text-[13px] font-medium bg-white text-ink-950 hover:bg-slate-100 transition">Contact</a>
       </div>
-
-      <div class="flex items-center gap-3">
-        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 bg-cyber-green text-black px-5 py-[10px] rounded-full text-[13px] font-bold tracking-tight hover:bg-[#00E67A] hover:shadow-glow transition magnetic">
-          Audit Your Infrastructure
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 8H12M12 8L8 4M12 8L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+      <div class="flex items-center gap-2">
+        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 bg-white text-ink-950 px-5 py-2.5 rounded-full text-[13px] font-semibold hover:bg-slate-100 transition">Audit your infrastructure <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <button id="mobileMenuBtn" aria-label="Open menu" class="lg:hidden h-10 w-10 rounded-full bg-white/[0.06] border border-white/10 flex items-center justify-center hover:bg-white/10 transition">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
         </button>
       </div>
     </div>
   </div>
-  <!-- Mobile menu -->
-  <div id="mobileMenu" class="hidden lg:hidden border-t border-white/10 bg-[#0B1016]">
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-white/10 bg-ink-900">
     <div class="px-4 py-4 space-y-1">
       <a href="#about" class="block px-4 py-3 rounded-xl text-sm font-medium text-slate-300 hover:bg-white/5">About</a>
       <a href="#products" class="block px-4 py-3 rounded-xl text-sm font-medium text-slate-300 hover:bg-white/5">Products</a>
       <a href="#services" class="block px-4 py-3 rounded-xl text-sm font-medium text-slate-300 hover:bg-white/5">Services</a>
       <a href="#podcast" class="block px-4 py-3 rounded-xl text-sm font-medium text-slate-300 hover:bg-white/5">Podcast</a>
-      <a href="#booking" class="block px-4 py-3 rounded-xl text-sm font-medium text-slate-300 hover:bg-white/5">Book a Call</a>
-      <a href="#contact" class="block mt-2 text-center bg-cyber-green text-black px-4 py-3 rounded-full font-bold text-sm">Audit Your Infrastructure</a>
+      <a href="#booking" class="block px-4 py-3 rounded-xl text-sm font-medium text-slate-300 hover:bg-white/5">Book a call</a>
+      <a href="#contact" class="block mt-2 text-center bg-white text-ink-950 px-4 py-3 rounded-full font-semibold text-sm">Audit your infrastructure</a>
     </div>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="relative overflow-hidden">
-  <!-- Background layers -->
-  <div class="absolute inset-0 bg-[#040507]"></div>
-  <div class="absolute inset-0 grid-pattern opacity-40"></div>
-  <canvas id="heroParticles" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
-  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#040507] pointer-events-none"></div>
-  <div class="absolute -top-32 -right-32 h-[520px] w-[520px] rounded-full bg-cyber-green/10 blur-[100px] pointer-events-none"></div>
-  <div class="absolute top-20 -left-32 h-[400px] w-[400px] rounded-full bg-emerald-900/20 blur-[100px] pointer-events-none"></div>
+<section class="relative overflow-hidden border-b border-white/[0.04]">
+  <div class="absolute inset-0 bg-ink-950"></div>
+  <div class="absolute inset-0 grid-subtle opacity-[0.35]"></div>
+  <!-- subtle orbs -->
+  <div class="absolute -top-24 -right-24 h-[560px] w-[560px] rounded-full bg-emerald-500/[0.06] blur-[90px] pointer-events-none"></div>
+  <div class="absolute top-32 -left-32 h-[520px] w-[520px] rounded-full bg-sky-500/[0.05] blur-[90px] pointer-events-none"></div>
+  <canvas id="heroParticles" class="absolute inset-0 w-full h-full pointer-events-none opacity-[0.45]"></canvas>
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink-950 pointer-events-none"></div>
 
-  <div class="relative max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 lg:pt-20 pb-12 lg:pb-20">
-    <div class="grid lg:grid-cols-12 gap-8 lg:gap-6 items-center">
-      <!-- Left copy -->
-      <div class="lg:col-span-7">
-        <!-- Badge -->
-        <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur px-3 py-1.5 mb-6">
-          <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyber-green opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-cyber-green"></span>
-          </span>
-          <span class="font-mono text-[11px] tracking-[0.12em] uppercase text-slate-300">Offensive Security • AI Engineering • Lincoln Park, MI</span>
-          <span class="hidden sm:inline-flex ml-2 bg-cyber-green text-black text-[10px] font-bold px-2 py-0.5 rounded-full">AVAILABLE FOR ENGAGEMENTS</span>
+  <div class="relative max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 lg:pt-16 pb-10 lg:pb-16">
+    <div class="grid lg:grid-cols-12 gap-8 lg:gap-8 items-center">
+      <div class="lg:col-span-6">
+        <div class="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur px-3.5 py-2">
+          <span class="h-1.5 w-1.5 rounded-full bg-accent-500 animate-pulse"></span>
+          <span class="font-mono text-[11px] tracking-[0.12em] uppercase text-slate-300">Lincoln Park, MI • Offensive Security + AI Engineering</span>
+          <span class="hidden sm:inline-flex ml-1 rounded-full bg-accent-500 text-white text-[10px] font-semibold px-2 py-0.5">Available for new engagements</span>
         </div>
 
-        <h1 class="font-display font-bold tracking-[-0.03em] leading-[0.92] text-[36px] sm:text-[48px] lg:text-[56px] xl:text-[64px]">
-          <span class="text-white">Secure the</span> <span class="text-cyber-green">Perimeter.</span><br>
-          <span class="text-white">Build Intelligent</span><br>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">Systems.</span>
+        <h1 class="mt-6 font-display font-semibold tracking-[-0.03em] leading-[0.92] text-[38px] sm:text-[48px] lg:text-[54px]">
+          <span class="text-white">Secure the</span> <span class="text-white">perimeter.</span><br>
+          <span class="text-slate-300">Build with</span> <span class="text-white relative">intelligence.<span class="absolute -bottom-1 left-0 h-[3px] w-full bg-accent-500/20 rounded-full"></span></span>
         </h1>
 
-        <p class="mt-5 max-w-[560px] text-[15px] sm:text-[16px] leading-relaxed text-slate-400">
-          <span class="text-slate-200 font-medium">CTRLALTDET LLC</span> emulates real-world adversaries to harden your infrastructure — then engineers the AI-native software that accelerates your business. Led by Chief Architect <span class="text-white">Austin Allen Bale</span>.
+        <p class="mt-5 max-w-[560px] text-[15.5px] leading-relaxed text-slate-400">
+          CTRLALTDET LLC helps B2B teams see what attackers see — then ships the software that turns insight into advantage. Led by Chief Architect <span class="text-slate-200 font-medium">Austin Allen Bale</span>. No fear tactics. Only prioritized, fix-first clarity.
         </p>
 
         <div class="mt-7 flex flex-col sm:flex-row gap-3">
-          <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-cyber-green text-black px-7 py-3.5 rounded-full font-bold text-[14px] hover:bg-[#00E67A] hover:shadow-glow transition shadow-card magnetic">
-            Audit Your Infrastructure
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-white text-ink-950 px-7 py-3.5 rounded-full font-semibold text-[14px] hover:bg-slate-100 transition shadow-soft">
+            Audit your infrastructure
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <button onclick="openCalendly()" class="inline-flex items-center justify-center gap-2 bg-white text-black px-7 py-3.5 rounded-full font-semibold text-[14px] hover:bg-slate-100 transition">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/><path d="M8 3h8"/></svg>
-            Book 30-min Consult
+          <button onclick="openCalendly()" class="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur text-white px-7 py-3.5 font-medium text-[14px] hover:bg-white/[0.07] transition">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l2 2"/></svg>
+            Book 30-min consult
           </button>
         </div>
-        <div class="mt-3 flex flex-col sm:flex-row gap-3">
-          <a href="#products" class="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-white px-7 py-3 rounded-full font-medium text-[13px] hover:bg-white/10 transition">
-            Explore Our Tools →
-          </a>
-          <span class="inline-flex items-center justify-center text-xs font-mono text-slate-500 px-2">or press <kbd class="mx-1 px-1.5 py-0.5 rounded bg-white/10 border border-white/10 text-white">/</kbd> to jump to booking</span>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3 text-xs text-slate-500">
+          <span class="inline-flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Remediation-first, retested</span>
+          <span class="h-1 w-1 rounded-full bg-white/15"></span>
+          <span>Private & local-first AI • NDA-ready</span>
         </div>
 
-        <div class="mt-6 flex items-center gap-3 text-xs font-mono text-slate-500">
-          <span class="hidden sm:inline-flex items-center gap-2">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00FF88"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="1.4"/></svg>
-            No scare tactics. Real exploits. Remediation first.
-          </span>
-          <span class="sm:hidden">Trusted methodology • Remediation first</span>
-        </div>
-
-        <!-- Trust bar -->
-        <div class="mt-8 lg:mt-10 border-t border-white/10 pt-6">
-          <p class="font-mono text-[11px] tracking-[0.14em] uppercase text-slate-500 mb-3">Core Stack & Methodology</p>
+        <div class="mt-8 border-t border-white/10 pt-6">
+          <p class="font-mono text-[11px] tracking-[0.13em] uppercase text-slate-500 mb-3">Trusted stack</p>
           <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-xs font-mono text-slate-300">Python</span>
-            <span class="px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-xs font-mono text-slate-300">React</span>
-            <span class="px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-xs font-mono text-slate-300">Node.js</span>
-            <span class="px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-xs font-mono text-slate-300">FastAPI</span>
-            <span class="px-3 py-1.5 rounded-full bg-cyber-green/10 border border-cyber-green/20 text-xs font-mono text-cyber-green">Ollama • Open WebUI</span>
-            <span class="px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-xs font-mono text-slate-300">OSINT</span>
-            <span class="px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-xs font-mono text-slate-300">Red Team</span>
+            <span class="px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-xs font-medium text-slate-300">Python</span>
+            <span class="px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-xs font-medium text-slate-300">React</span>
+            <span class="px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-xs font-medium text-slate-300">Node.js</span>
+            <span class="px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-xs font-medium text-slate-300">FastAPI</span>
+            <span class="px-3 py-1.5 rounded-full bg-accent-soft border border-emerald-500/15 text-xs font-medium text-emerald-700">Ollama • Open WebUI</span>
+            <span class="px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-xs font-medium text-slate-300">OSINT</span>
           </div>
         </div>
       </div>
 
-      <!-- Right visual - Terminal / Dashboard -->
-      <div class="lg:col-span-5 relative">
-        <!-- Glow behind -->
-        <div class="absolute inset-0 -z-10 bg-gradient-to-b from-cyber-green/10 to-transparent blur-2xl rounded-3xl"></div>
-        
-        <div class="glass-strong rounded-[20px] overflow-hidden shadow-card float-slow spotlight-card beam relative">
-          <!-- Window header -->
-          <div class="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-white/[0.03]">
+      <!-- Premium SaaS preview -->
+      <div class="lg:col-span-6 relative">
+        <div class="absolute inset-0 -z-10 bg-gradient-to-b from-white/[0.04] to-transparent blur-2xl rounded-3xl"></div>
+        <div class="float rounded-[20px] overflow-hidden bg-white shadow-card border border-slate-200">
+          <!-- Browser header -->
+          <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50/70">
             <div class="flex items-center gap-2">
-              <span class="h-3 w-3 rounded-full bg-red-500/90"></span>
-              <span class="h-3 w-3 rounded-full bg-yellow-500/90"></span>
-              <span class="h-3 w-3 rounded-full bg-green-500/90"></span>
+              <span class="h-3 w-3 rounded-full bg-slate-200"></span>
+              <span class="h-3 w-3 rounded-full bg-slate-200"></span>
+              <span class="h-3 w-3 rounded-full bg-slate-200"></span>
             </div>
-            <div class="font-mono text-[11px] tracking-widest uppercase text-slate-500">redforge — external scan — lincoln park node</div>
-            <div class="h-6 w-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+            <div class="flex items-center gap-2 text-[11px] font-mono text-slate-500">
+              <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              redforge.app • Lincoln Park Node • Live
+            </div>
+            <div class="hidden sm:flex items-center gap-1.5 text-[11px] font-medium text-slate-600">
+              <span class="px-2 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700">3 critical</span>
+              <span class="px-2 py-1 rounded-full bg-slate-900 text-white">Export</span>
             </div>
           </div>
 
-          <!-- Terminal content -->
-          <div class="p-4 sm:p-5 font-mono text-[12px] leading-relaxed">
-            <div class="flex items-center gap-2 text-slate-500 mb-3">
-              <span class="text-cyber-green">●</span> LIVE EXTERNAL SURFACE • 2.4s ago
-              <span class="ml-auto px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/20 text-[10px]">3 CRITICAL</span>
-            </div>
-
-            <div class="space-y-2.5 bg-[#070A0F] rounded-xl p-4 border border-white/5">
-              <div class="flex gap-2"><span class="text-slate-600">$</span><span class="text-slate-300">redforge scan --target acme.example --profile b2b-external</span></div>
-              <div class="text-slate-500">[<span class="text-cyber-green">14:22:04</span>] Enumerating 1,247 external assets...</div>
-              <div class="text-slate-500">[<span class="text-cyber-green">14:22:07</span>] <span class="text-red-400">! Exposed admin panel</span> <span class="text-slate-600">→</span> <span class="text-white">admin.acme.example:8443</span> <span class="ml-2 px-1.5 py-0.5 bg-red-500/20 text-red-400 rounded text-[10px]">CVE-2024-21762</span></div>
-              <div class="text-slate-500">[<span class="text-cyber-green">14:22:09</span>] <span class="text-amber-400">! Shadow IT subdomain</span> — dev-legacy.acme.example <span class="text-slate-600">(no WAF)</span></div>
-              <div class="text-slate-500">[<span class="text-cyber-green">14:22:11</span>] <span class="text-white">OSINT correlation</span> — 42 leaked creds linked to @acme.example</div>
-              <div class="flex gap-2 pt-2 border-t border-white/5 mt-3"><span class="text-slate-600">$</span><span class="text-cyber-green terminal-caret">reconframework --enrich --export</span></div>
-            </div>
-
-            <!-- Metrics row -->
-            <div class="grid grid-cols-3 gap-3 mt-4">
-              <div class="rounded-xl bg-white/[0.03] border border-white/10 p-3">
-                <div class="text-[11px] tracking-widest uppercase text-slate-500">Assets Found</div>
-                <div class="text-xl font-bold text-white mt-1">1,247</div>
-                <div class="text-[11px] text-cyber-green">+18 since yesterday</div>
+          <!-- Content -->
+          <div class="p-4 sm:p-5 bg-white">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-[11px] font-mono tracking-widest uppercase text-slate-500">External Surface • acme.example</div>
+                <div class="text-[13px] font-medium text-slate-900 mt-0.5">Continuous discovery • Last scan 2.4s ago</div>
               </div>
-              <div class="rounded-xl bg-white/[0.03] border border-white/10 p-3">
-                <div class="text-[11px] tracking-widest uppercase text-slate-500">Risk Score</div>
-                <div class="text-xl font-bold text-amber-400 mt-1">7.8 / 10</div>
+              <div class="hidden sm:flex items-center gap-2">
+                <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+                <span class="text-xs font-medium text-slate-700">All systems monitored</span>
+              </div>
+            </div>
+
+            <!-- Metrics -->
+            <div class="grid grid-cols-3 gap-3 mt-4">
+              <div class="rounded-2xl bg-slate-50 border border-slate-200 p-3">
+                <div class="text-[11px] font-mono tracking-widest uppercase text-slate-500">Assets</div>
+                <div class="text-[22px] font-semibold tracking-tight text-slate-900 mt-1">1,247</div>
+                <div class="text-[11px] font-medium text-emerald-600">+18 since yesterday</div>
+              </div>
+              <div class="rounded-2xl bg-slate-50 border border-slate-200 p-3">
+                <div class="text-[11px] font-mono tracking-widest uppercase text-slate-500">Risk score</div>
+                <div class="text-[22px] font-semibold tracking-tight text-amber-600 mt-1">7.8 / 10</div>
                 <div class="text-[11px] text-slate-500">High priority</div>
               </div>
-              <div class="rounded-xl bg-cyber-green text-black p-3">
-                <div class="text-[11px] tracking-widest uppercase opacity-70">Time to Fix</div>
-                <div class="text-xl font-bold mt-1">~4.2h</div>
-                <div class="text-[11px] opacity-70">with playbook</div>
+              <div class="rounded-2xl bg-ink-900 text-white p-3">
+                <div class="text-[11px] font-mono tracking-widest uppercase text-white/60">Time to fix</div>
+                <div class="text-[22px] font-semibold tracking-tight mt-1">~4.2h</div>
+                <div class="text-[11px] text-white/60">with playbook</div>
               </div>
             </div>
 
-            <div class="mt-4 flex items-center justify-between text-[11px]">
-              <span class="text-slate-500 font-mono">Encrypted • Local-first • Zero data exfiltration</span>
-              <a href="#products" class="text-cyber-green hover:underline">View RedForge →</a>
+            <!-- Mini table / chart -->
+            <div class="mt-4 rounded-2xl border border-slate-200 overflow-hidden">
+              <div class="px-4 py-2.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-700">Top exposures</span>
+                <span class="text-xs font-mono text-slate-500">Priority → Owner</span>
+              </div>
+              <div class="divide-y divide-slate-100">
+                <div class="px-4 py-3 flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <span class="h-2 w-2 rounded-full bg-red-500"></span>
+                    <div>
+                      <div class="text-sm font-medium text-slate-900">Exposed admin panel</div>
+                      <div class="text-xs font-mono text-slate-500">admin.acme.example:8443 • CVE-2024-21762</div>
+                    </div>
+                  </div>
+                  <span class="text-xs font-medium px-2 py-1 rounded-full bg-red-50 border border-red-200 text-red-700">Critical</span>
+                </div>
+                <div class="px-4 py-3 flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <span class="h-2 w-2 rounded-full bg-amber-500"></span>
+                    <div>
+                      <div class="text-sm font-medium text-slate-900">Shadow IT subdomain</div>
+                      <div class="text-xs font-mono text-slate-500">dev-legacy.acme.example • No WAF</div>
+                    </div>
+                  </div>
+                  <span class="text-xs font-medium px-2 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700">High</span>
+                </div>
+                <div class="px-4 py-3 flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <span class="h-2 w-2 rounded-full bg-slate-400"></span>
+                    <div>
+                      <div class="text-sm font-medium text-slate-900">42 leaked credentials</div>
+                      <div class="text-xs font-mono text-slate-500">OSINT correlation • @acme.example</div>
+                    </div>
+                  </div>
+                  <span class="text-xs font-medium px-2 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700">Review</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-3 flex items-center justify-between text-[11px] font-mono text-slate-500">
+              <span>Encrypted • Zero exfiltration • SOC 2 aligned report</span>
+              <a href="#products" class="font-medium text-ink-900 hover:underline">View RedForge →</a>
             </div>
           </div>
         </div>
 
-        <!-- Floating badges -->
-        <div class="hidden sm:flex absolute -right-3 top-10 bg-white text-black rounded-full px-3 py-1.5 text-xs font-bold shadow-lg items-center gap-2">
-          <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span> Preemptive Detection
+        <!-- Floating trust pills -->
+        <div class="hidden lg:flex absolute -right-2 top-10 bg-white border border-slate-200 shadow-soft rounded-full px-3 py-1.5 text-xs font-medium text-slate-700 items-center gap-2">
+          <span class="h-2 w-2 rounded-full bg-emerald-500"></span> Preemptive detection
         </div>
-        <div class="hidden sm:flex absolute -left-6 bottom-6 glass rounded-full px-3 py-1.5 text-xs font-mono text-slate-200 items-center gap-2">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00FF88"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="1.5"/></svg>
-          SOC 2 Aligned Reporting
+        <div class="hidden lg:flex absolute -left-4 bottom-8 bg-ink-900 text-white rounded-full px-3.5 py-2 text-xs font-medium items-center gap-2 shadow-card">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Remediation playbook included
         </div>
       </div>
     </div>
@@ -326,108 +306,100 @@ tailwind.config = {
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="relative border-t border-white/5 bg-[#080B0F]">
-  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+<section id="about" class="relative bg-[#F8FAFC] border-t border-slate-200">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
     <div class="grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
       <div class="lg:col-span-7">
-        <div class="inline-flex items-center gap-2 text-cyber-green font-mono text-xs tracking-[0.16em] uppercase mb-3">
-          <span class="h-px w-6 bg-cyber-green"></span> About CTRLALTDET LLC
+        <div class="inline-flex items-center gap-2 text-emerald-700 font-mono text-xs tracking-[0.14em] uppercase">
+          <span class="h-px w-6 bg-emerald-600"></span> About CTRLALTDET LLC
         </div>
-        <h2 class="font-display font-bold text-[30px] sm:text-[36px] leading-[1.05] tracking-tight text-white">
+        <h2 class="mt-3 font-display font-semibold text-[32px] sm:text-[36px] leading-[1.05] tracking-tight text-slate-900">
           Michigan-built.<br>
-          <span class="text-slate-400">Adversary-tested.</span>
+          <span class="text-slate-500">Adversary-tested.</span>
         </h2>
-        <div class="mt-5 space-y-4 text-[14.5px] leading-relaxed text-slate-400">
+        <div class="mt-5 space-y-4 text-[14.5px] leading-relaxed text-slate-600">
           <p>
-            <strong class="text-slate-200">CTRLALTDET LLC</strong> is a specialized cybersecurity and AI software studio headquartered in <strong class="text-white">Lincoln Park, Michigan</strong>. We operate at the intersection of offensive security and intelligent systems — helping B2B teams find the holes before attackers do, and then building the software that turns insight into advantage.
+            <strong class="text-slate-900">CTRLALTDET LLC</strong> is a cybersecurity and AI software studio in <strong class="text-slate-900">Lincoln Park, Michigan</strong>. We sit at the intersection of offensive security and product engineering — finding the gaps before attackers do, then building the software that turns insight into advantage.
           </p>
           <p>
-            We don't sell fear. We sell clarity: continuous external visibility, rigorous threat modeling, and full-stack engineering that ships. From external attack-surface management to local-first AI platforms, every engagement is scoped for measurable risk reduction and shipped with documentation your team can actually use.
+            We trade scare tactics for clarity: continuous external visibility, rigorous threat modeling, and full-stack engineering that ships with runbooks your team can run tomorrow.
           </p>
           <div class="grid sm:grid-cols-2 gap-3 pt-2">
-            <div class="flex gap-3 rounded-xl bg-white/[0.03] border border-white/10 p-4">
-              <div class="h-9 w-9 rounded-lg bg-cyber-green/10 border border-cyber-green/20 flex items-center justify-center shrink-0">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00FF88" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v8M8 12h8"/></svg>
+            <div class="flex gap-3 rounded-2xl bg-white border border-slate-200 p-4 shadow-soft spotlight card-hover">
+              <div class="h-9 w-9 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v8M8 12h8"/></svg>
               </div>
               <div>
-                <div class="text-sm font-semibold text-white">Threat modeling, not theatre</div>
-                <div class="text-xs leading-relaxed text-slate-500 mt-1">Adversary emulation, OSINT correlation, and prioritized remediation — not PDF fatigue.</div>
+                <div class="text-sm font-semibold text-slate-900">Threat modeling, not theatre</div>
+                <div class="text-xs leading-relaxed text-slate-500 mt-1">Emulation, OSINT correlation, and prioritized fixes — not PDF fatigue.</div>
               </div>
             </div>
-            <div class="flex gap-3 rounded-xl bg-white/[0.03] border border-white/10 p-4">
-              <div class="h-9 w-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+            <div class="flex gap-3 rounded-2xl bg-white border border-slate-200 p-4 shadow-soft spotlight card-hover">
+              <div class="h-9 w-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center shrink-0">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6"><path d="M12 8a4 4 0 100 8 4 4 0 000-8z"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
               </div>
               <div>
-                <div class="text-sm font-semibold text-white">AI that stays on-prem</div>
-                <div class="text-xs leading-relaxed text-slate-500 mt-1">Local LLM deployments with Ollama & Open WebUI — private, compliant, and fast.</div>
+                <div class="text-sm font-semibold text-slate-900">AI that stays on-prem</div>
+                <div class="text-xs leading-relaxed text-slate-500 mt-1">Private local LLMs with Ollama & Open WebUI — fast, compliant.</div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Architect Card -->
       <div class="lg:col-span-5">
-        <div class="glass-strong rounded-[20px] overflow-hidden spotlight-card">
+        <div class="rounded-[20px] overflow-hidden bg-white border border-slate-200 shadow-card spotlight">
           <div class="p-6 sm:p-7">
             <div class="flex items-start gap-4">
-              <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-slate-700 to-slate-900 border border-white/10 flex items-center justify-center text-white font-display font-bold text-lg shrink-0">
-                AB
-              </div>
+              <div class="h-12 w-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-white font-display font-semibold text-[15px] shrink-0">AB</div>
               <div>
-                <div class="font-display font-bold text-white leading-tight">Austin Allen Bale</div>
-                <div class="font-mono text-xs tracking-widest uppercase text-cyber-green">Founder & Chief Architect</div>
+                <div class="font-display font-semibold text-slate-900 leading-tight">Austin Allen Bale</div>
+                <div class="font-mono text-xs tracking-wide uppercase text-emerald-700">Founder & Chief Architect</div>
                 <div class="mt-2 flex flex-wrap gap-1.5">
-                  <span class="px-2 py-1 rounded-full bg-cyber-green text-black text-[11px] font-bold">AI Software Engineering</span>
-                  <span class="px-2 py-1 rounded-full bg-white/10 text-white text-[11px] font-medium">Offensive Security</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-900 text-white text-[11px] font-medium">AI Software Engineering</span>
+                  <span class="px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-[11px] font-medium">Offensive Security</span>
                 </div>
               </div>
             </div>
-
-            <p class="mt-5 text-[13.5px] leading-relaxed text-slate-400">
-              Austin leads engineering and adversary operations at CTRLALTDET. Specialized in <span class="text-slate-200">advanced threat modeling, external reconnaissance tradecraft, and local LLM architectures</span> — including self-hosted Ollama + Open WebUI stacks for privacy-first AI. He ships production Python, React, Node.js, and FastAPI systems that security teams trust in the field.
+            <p class="mt-5 text-[13.5px] leading-relaxed text-slate-600">
+              Austin leads engineering and adversary operations. Specialized in <span class="text-slate-900 font-medium">threat modeling, external recon tradecraft, and local LLM architectures</span> — including self-hosted Ollama + Open WebUI. Production Python, React, Node.js, FastAPI.
             </p>
-
             <div class="mt-5 grid grid-cols-3 gap-3 text-center">
-              <div class="rounded-xl bg-[#070A0F] border border-white/10 py-3">
+              <div class="rounded-xl bg-slate-50 border border-slate-200 py-3">
                 <div class="font-mono text-[11px] tracking-widest uppercase text-slate-500">Focus</div>
-                <div class="text-sm font-semibold text-white mt-1">Red Team /<br>OSINT</div>
+                <div class="text-sm font-semibold text-slate-900 mt-1">Red Team<br>OSINT</div>
               </div>
-              <div class="rounded-xl bg-[#070A0F] border border-white/10 py-3">
+              <div class="rounded-xl bg-slate-50 border border-slate-200 py-3">
                 <div class="font-mono text-[11px] tracking-widest uppercase text-slate-500">Stack</div>
-                <div class="text-sm font-semibold text-white mt-1">Python •<br>FastAPI</div>
+                <div class="text-sm font-semibold text-slate-900 mt-1">Python •<br>FastAPI</div>
               </div>
-              <div class="rounded-xl bg-cyber-green text-black py-3">
-                <div class="font-mono text-[11px] tracking-widest uppercase opacity-70">Local AI</div>
-                <div class="text-sm font-bold mt-1">Ollama<br>Open WebUI</div>
+              <div class="rounded-xl bg-emerald-600 text-white py-3">
+                <div class="font-mono text-[11px] tracking-widest uppercase text-white/70">Local AI</div>
+                <div class="text-sm font-semibold mt-1">Ollama<br>Open WebUI</div>
               </div>
             </div>
-
             <div class="mt-5 flex items-center gap-2 text-xs font-mono text-slate-500">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Operating base: Lincoln Park, MI — serving Michigan & remote B2B nationwide
+              Lincoln Park, MI — Michigan & remote B2B nationwide
             </div>
           </div>
-          <div class="px-6 sm:px-7 py-4 bg-white/[0.03] border-t border-white/10 flex items-center justify-between">
-            <span class="font-mono text-xs text-slate-500">Available for architecture reviews & red team planning</span>
-            <button onclick="openCalendly()" class="text-xs font-bold text-cyber-green hover:underline">Book a consult →</button>
+          <div class="px-6 sm:px-7 py-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between">
+            <span class="font-mono text-xs text-slate-500">Available for reviews & red-team planning</span>
+            <button onclick="openCalendly()" class="text-xs font-semibold text-emerald-700 hover:text-emerald-800 hover:underline">Book a consult →</button>
           </div>
         </div>
-
-        <!-- Mini stats -->
         <div class="mt-4 grid grid-cols-3 gap-3">
-          <div class="rounded-xl bg-white/[0.03] border border-white/10 p-3 text-center">
-            <div class="text-lg font-bold text-white">Local-first</div>
-            <div class="text-[11px] font-mono uppercase tracking-widest text-slate-500">AI Deployments</div>
+          <div class="rounded-xl bg-white border border-slate-200 p-3 text-center shadow-soft">
+            <div class="text-[15px] font-semibold text-slate-900">Local-first</div>
+            <div class="text-[11px] font-mono uppercase tracking-widest text-slate-500">AI Deploys</div>
           </div>
-          <div class="rounded-xl bg-white/[0.03] border border-white/10 p-3 text-center">
-            <div class="text-lg font-bold text-white">B2B only</div>
+          <div class="rounded-xl bg-white border border-slate-200 p-3 text-center shadow-soft">
+            <div class="text-[15px] font-semibold text-slate-900">B2B only</div>
             <div class="text-[11px] font-mono uppercase tracking-widest text-slate-500">No Consumer Data</div>
           </div>
-          <div class="rounded-xl bg-white/[0.03] border border-white/10 p-3 text-center">
-            <div class="text-lg font-bold text-cyber-green">48h</div>
-            <div class="text-[11px] font-mono uppercase tracking-widest text-slate-500">Typical Triage</div>
+          <div class="rounded-xl bg-slate-900 text-white p-3 text-center">
+            <div class="text-[15px] font-semibold">48h</div>
+            <div class="text-[11px] font-mono uppercase tracking-widest text-white/60">Typical Triage</div>
           </div>
         </div>
       </div>
@@ -436,433 +408,302 @@ tailwind.config = {
 </section>
 
 <!-- PRODUCTS -->
-<section id="products" class="relative bg-[#040507] border-t border-white/5">
-  <div class="absolute inset-0 grid-pattern opacity-20"></div>
-  <div class="relative max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+<section id="products" class="relative bg-white border-t border-slate-200">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
     <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8">
       <div>
-        <div class="inline-flex items-center gap-2 text-cyber-green font-mono text-xs tracking-[0.16em] uppercase">
-          <span class="h-px w-6 bg-cyber-green"></span> Products & Solutions Portfolio
+        <div class="inline-flex items-center gap-2 text-emerald-700 font-mono text-xs tracking-[0.13em] uppercase">
+          <span class="h-px w-6 bg-emerald-600"></span> Products & Solutions
         </div>
-        <h2 class="mt-3 font-display font-bold text-[30px] sm:text-[38px] leading-none tracking-tight text-white">
-          Arsenal built for operators,<br>
+        <h2 class="mt-3 font-display font-semibold text-[30px] sm:text-[34px] leading-none tracking-tight text-slate-900">
+          Built for operators,<br>
           <span class="text-slate-500">not slide decks.</span>
         </h2>
       </div>
-      <p class="max-w-[520px] text-[14px] leading-relaxed text-slate-400">
-        Four flagship platforms — each solving a real operational gap we encountered in the field. From external attack-surface visibility to human-centered AgeTech.
-      </p>
+      <p class="max-w-[520px] text-[14px] leading-relaxed text-slate-600">Four platforms born from real engagements — from external surface coverage to human-centered AgeTech.</p>
     </div>
 
     <div class="grid md:grid-cols-2 gap-5 lg:gap-6">
-      <!-- RedForge -->
-      <article class="group relative rounded-[20px] overflow-hidden glass-strong hover:border-cyber-green/30 transition spotlight-card">
-        <div class="absolute inset-0 bg-gradient-to-br from-cyber-green/[0.06] to-transparent opacity-0 group-hover:opacity-100 transition"></div>
-        <div class="relative p-6 sm:p-7">
+      <article class="group relative rounded-[20px] overflow-hidden bg-white border border-slate-200 shadow-soft card-hover spotlight">
+        <div class="p-6 sm:p-7">
           <div class="flex items-start justify-between gap-4">
-            <div class="h-11 w-11 rounded-xl bg-cyber-green text-black flex items-center justify-center">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-5"/></svg>
+            <div class="h-10 w-10 rounded-xl bg-slate-900 text-white flex items-center justify-center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-5"/></svg>
             </div>
-            <span class="px-2.5 py-1 rounded-full bg-cyber-green text-black text-[11px] font-bold tracking-wide">FLAGSHIP • B2B</span>
+            <span class="px-2.5 py-1 rounded-full bg-slate-900 text-white text-[11px] font-semibold">Flagship • B2B</span>
           </div>
-          <h3 class="mt-4 font-display font-bold text-[22px] leading-none text-white">RedForge</h3>
-          <p class="font-mono text-xs tracking-widest uppercase text-cyber-green mt-1">External Attack-Surface Vulnerability Scanner</p>
-          <p class="mt-3 text-[13.5px] leading-relaxed text-slate-400">
-            <strong class="text-slate-200">See what attackers see — before they do.</strong> RedForge continuously maps your external perimeter, correlates exposures with OSINT and CVE intelligence, and delivers prioritized, fix-first reports. No agents. No noise. Just the weaknesses that matter.
-          </p>
-          <ul class="mt-4 space-y-1.5 text-[13px] text-slate-400">
-            <li class="flex gap-2"><span class="text-cyber-green mt-1">—</span> Continuous discovery: domains, subdomains, shadow IT, exposed services</li>
-            <li class="flex gap-2"><span class="text-cyber-green mt-1">—</span> Risk-ranked findings with exploit context and remediation playbooks</li>
-            <li class="flex gap-2"><span class="text-cyber-green mt-1">—</span> Executive + engineer reporting — same truth, right detail level</li>
+          <h3 class="mt-4 font-display font-semibold text-[20px] leading-none text-slate-900">RedForge</h3>
+          <p class="font-mono text-xs tracking-wide uppercase text-emerald-700 mt-1">External Attack-Surface Scanner</p>
+          <p class="mt-3 text-[13.5px] leading-relaxed text-slate-600"><strong class="text-slate-900">See what attackers see — before they do.</strong> Continuous mapping, OSINT + CVE correlation, and fix-first reports. No agents. No noise.</p>
+          <ul class="mt-4 space-y-1.5 text-[13px] text-slate-600">
+            <li class="flex gap-2"><span class="text-slate-400">—</span> Domains, shadow IT, exposed services — always on</li>
+            <li class="flex gap-2"><span class="text-slate-400">—</span> Risk-ranked findings with exploit context & playbooks</li>
+            <li class="flex gap-2"><span class="text-slate-400">—</span> Exec + engineer views — same truth, right detail</li>
           </ul>
           <div class="mt-4 flex flex-wrap gap-1.5">
-            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-300">External ASM</span>
-            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-300">CVE Correlation</span>
-            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-300">FastAPI</span>
+            <span class="px-2.5 py-1 rounded-full bg-slate-50 border border-slate-200 text-xs font-medium text-slate-700">External ASM</span>
+            <span class="px-2.5 py-1 rounded-full bg-slate-50 border border-slate-200 text-xs font-medium text-slate-700">CVE Correlation</span>
+            <span class="px-2.5 py-1 rounded-full bg-slate-50 border border-slate-200 text-xs font-medium text-slate-700">FastAPI</span>
           </div>
           <div class="mt-6 flex gap-3">
-            <a href="#contact" class="flex-1 text-center bg-white text-black px-4 py-2.5 rounded-full text-sm font-bold hover:bg-slate-100 transition">Request RedForge Demo</a>
-            <a href="#contact" class="px-4 py-2.5 rounded-full border border-white/15 text-sm font-semibold text-white hover:bg-white/5 transition">Docs</a>
+            <a href="#contact" class="flex-1 text-center bg-slate-900 text-white px-4 py-2.5 rounded-full text-sm font-semibold hover:bg-black transition">Request Demo</a>
+            <a href="#contact" class="px-4 py-2.5 rounded-full border border-slate-200 text-sm font-medium text-slate-700 hover:bg-slate-50 transition">Docs</a>
           </div>
         </div>
       </article>
 
-      <!-- ReconFramework v2.0 -->
-      <article class="group relative rounded-[20px] overflow-hidden glass-strong hover:border-white/15 transition spotlight-card">
-        <div class="relative p-6 sm:p-7">
+      <article class="group relative rounded-[20px] overflow-hidden bg-white border border-slate-200 shadow-soft card-hover spotlight">
+        <div class="p-6 sm:p-7">
           <div class="flex items-start justify-between gap-4">
-            <div class="h-11 w-11 rounded-xl bg-white text-black flex items-center justify-center">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7a5 5 0 015 5M12 7a3 3 0 013 3"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>
+            <div class="h-10 w-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-900">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7a5 5 0 015 5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>
             </div>
-            <span class="px-2.5 py-1 rounded-full bg-white/10 border border-white/15 text-white text-[11px] font-bold tracking-wide">v2.0 • AUTOMATED</span>
+            <span class="px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-[11px] font-semibold">v2.0 • Automated</span>
           </div>
-          <h3 class="mt-4 font-display font-bold text-[22px] leading-none text-white">ReconFramework <span class="text-cyber-green">v2.0</span></h3>
-          <p class="font-mono text-xs tracking-widest uppercase text-slate-400 mt-1">Automated External Network Reconnaissance</p>
-          <p class="mt-3 text-[13.5px] leading-relaxed text-slate-400">
-            <strong class="text-slate-200">Automated recon. Actionable intelligence.</strong> Orchestrate the recon stack you’d run by hand — subdomain enumeration, port discovery, service fingerprinting, and OSINT enrichment — in a single, auditable pipeline. Built for red teams and defenders who want operator-grade depth without operator toil.
-          </p>
-          <ul class="mt-4 space-y-1.5 text-[13px] text-slate-400">
-            <li class="flex gap-2"><span class="text-slate-500 mt-1">—</span> Modular workflow engine — drop in your favorite tools</li>
-            <li class="flex gap-2"><span class="text-slate-500 mt-1">—</span> Threat-intel correlation: leaks, certs, passive DNS, Shodan</li>
-            <li class="flex gap-2"><span class="text-slate-500 mt-1">—</span> Exportable artifacts for reports, SIEM, or RedForge ingestion</li>
+          <h3 class="mt-4 font-display font-semibold text-[20px] leading-none text-slate-900">ReconFramework <span class="text-emerald-600">v2.0</span></h3>
+          <p class="font-mono text-xs tracking-wide uppercase text-slate-500 mt-1">Automated External Reconnaissance</p>
+          <p class="mt-3 text-[13.5px] leading-relaxed text-slate-600"><strong class="text-slate-900">Automated recon. Human-grade judgment.</strong> Orchestrate enumeration, fingerprinting, and OSINT enrichment in one auditable pipeline.</p>
+          <ul class="mt-4 space-y-1.5 text-[13px] text-slate-600">
+            <li class="flex gap-2"><span class="text-slate-400">—</span> Modular workflow engine — drop in your tools</li>
+            <li class="flex gap-2"><span class="text-slate-400">—</span> Leaks, certs, passive DNS, Shodan correlation</li>
+            <li class="flex gap-2"><span class="text-slate-400">—</span> Exportable artifacts for SIEM / RedForge</li>
           </ul>
           <div class="mt-4 flex flex-wrap gap-1.5">
-            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-300">OSINT</span>
-            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-300">Python</span>
-            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-300">CLI + API</span>
+            <span class="px-2.5 py-1 rounded-full bg-slate-50 border border-slate-200 text-xs font-medium text-slate-700">OSINT</span>
+            <span class="px-2.5 py-1 rounded-full bg-slate-50 border border-slate-200 text-xs font-medium text-slate-700">Python</span>
+            <span class="px-2.5 py-1 rounded-full bg-slate-50 border border-slate-200 text-xs font-medium text-slate-700">CLI + API</span>
           </div>
           <div class="mt-6 flex gap-3">
-            <a href="#contact" class="flex-1 text-center bg-white/[0.06] border border-white/15 text-white px-4 py-2.5 rounded-full text-sm font-bold hover:bg-white/10 transition">Explore Framework</a>
-            <span class="px-3 py-2.5 rounded-full bg-amber-500/15 border border-amber-500/20 text-amber-300 text-xs font-mono hidden sm:inline-flex items-center">Operator Access</span>
+            <a href="#contact" class="flex-1 text-center bg-white border border-slate-200 text-slate-900 px-4 py-2.5 rounded-full text-sm font-semibold hover:bg-slate-50 transition">Explore Framework</a>
+            <span class="px-3 py-2.5 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-medium hidden sm:inline-flex items-center">Operator Access</span>
           </div>
         </div>
       </article>
 
-      <!-- Silvr -->
-      <article class="group relative rounded-[20px] overflow-hidden glass-strong hover:border-white/15 transition spotlight-card">
-        <div class="relative p-6 sm:p-7">
+      <article class="group relative rounded-[20px] overflow-hidden bg-white border border-slate-200 shadow-soft card-hover spotlight">
+        <div class="p-6 sm:p-7">
           <div class="flex items-start justify-between gap-4">
-            <div class="h-11 w-11 rounded-xl bg-gradient-to-br from-sky-400 to-indigo-500 text-white flex items-center justify-center">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.7"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11l-2 2-1-1"/><path d="M16 11h4v4"/></svg>
+            <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-sky-500 to-indigo-600 text-white flex items-center justify-center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M18 12l2 2-2 2"/></svg>
             </div>
-            <span class="px-2.5 py-1 rounded-full bg-sky-500/15 border border-sky-500/20 text-sky-300 text-[11px] font-bold tracking-wide">AGETECH • CONCIERGE</span>
+            <span class="px-2.5 py-1 rounded-full bg-sky-50 border border-sky-200 text-sky-700 text-[11px] font-semibold">AgeTech • Concierge</span>
           </div>
-          <h3 class="mt-4 font-display font-bold text-[22px] leading-none text-white">Silvr <span class="font-normal text-slate-500 text-[14px] align-middle">/ pronounced “silver” /</span></h3>
-          <p class="font-mono text-xs tracking-widest uppercase text-slate-400 mt-1">AgeTech Tech Concierge Platform</p>
-          <p class="mt-3 text-[13.5px] leading-relaxed text-slate-400">
-            <strong class="text-slate-200">Technology, with patience.</strong> Silvr reimagines tech support for seniors — a calm, accessible concierge that translates the confusing into the doable. Large type, clear steps, human tone, and family-aware workflows. No jargon. No rush.
-          </p>
-          <ul class="mt-4 space-y-1.5 text-[13px] text-slate-400">
-            <li class="flex gap-2"><span class="text-sky-400 mt-1">—</span> Streamlined help flows for devices, accounts, and everyday tasks</li>
-            <li class="flex gap-2"><span class="text-sky-400 mt-1">—</span> Accessible by design — WCAG-informed, senior-tested UX</li>
-            <li class="flex gap-2"><span class="text-sky-400 mt-1">—</span> Family & caregiver coordination without compromising dignity</li>
+          <h3 class="mt-4 font-display font-semibold text-[20px] leading-none text-slate-900">Silvr <span class="font-normal text-slate-400 text-[13px] align-middle">/ silver /</span></h3>
+          <p class="font-mono text-xs tracking-wide uppercase text-slate-500 mt-1">Tech Concierge for Seniors</p>
+          <p class="mt-3 text-[13.5px] leading-relaxed text-slate-600"><strong class="text-slate-900">Technology, with patience.</strong> Large type, clear steps, human tone — plus family coordination without compromising dignity.</p>
+          <ul class="mt-4 space-y-1.5 text-[13px] text-slate-600">
+            <li class="flex gap-2"><span class="text-sky-500">—</span> Guided flows for devices, accounts, everyday tasks</li>
+            <li class="flex gap-2"><span class="text-sky-500">—</span> WCAG-informed, senior-tested UX</li>
+            <li class="flex gap-2"><span class="text-sky-500">—</span> Caregiver coordination, respectfully</li>
           </ul>
           <div class="mt-4 flex flex-wrap gap-1.5">
-            <span class="px-2.5 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-xs font-mono text-sky-300">React</span>
-            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-300">Accessible UX</span>
-            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-300">Node.js</span>
+            <span class="px-2.5 py-1 rounded-full bg-sky-50 border border-sky-200 text-xs font-medium text-sky-700">React</span>
+            <span class="px-2.5 py-1 rounded-full bg-slate-50 border border-slate-200 text-xs font-medium text-slate-700">Accessible UX</span>
+            <span class="px-2.5 py-1 rounded-full bg-slate-50 border border-slate-200 text-xs font-medium text-slate-700">Node.js</span>
           </div>
           <div class="mt-6 flex gap-3">
-            <a href="#contact" class="flex-1 text-center bg-sky-500 text-white px-4 py-2.5 rounded-full text-sm font-bold hover:bg-sky-600 transition">Meet Silvr</a>
-            <a href="#contact" class="px-4 py-2.5 rounded-full border border-white/15 text-sm font-semibold text-white hover:bg-white/5 transition">Partnerships</a>
+            <a href="#contact" class="flex-1 text-center bg-sky-600 text-white px-4 py-2.5 rounded-full text-sm font-semibold hover:bg-sky-700 transition">Meet Silvr</a>
+            <a href="#contact" class="px-4 py-2.5 rounded-full border border-slate-200 text-sm font-medium text-slate-700 hover:bg-slate-50 transition">Partnerships</a>
           </div>
         </div>
       </article>
 
-      <!-- DataNudge Pro -->
-      <article class="group relative rounded-[20px] overflow-hidden glass-strong hover:border-cyber-green/20 transition spotlight-card">
-        <div class="absolute inset-0 bg-gradient-to-br from-violet-500/[0.06] to-transparent opacity-60"></div>
-        <div class="relative p-6 sm:p-7">
+      <article class="group relative rounded-[20px] overflow-hidden bg-white border border-slate-200 shadow-soft card-hover spotlight">
+        <div class="p-6 sm:p-7">
           <div class="flex items-start justify-between gap-4">
-            <div class="h-11 w-11 rounded-xl bg-white text-black flex items-center justify-center">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+            <div class="h-10 w-10 rounded-xl bg-slate-900 text-white flex items-center justify-center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
             </div>
-            <span class="px-2.5 py-1 rounded-full bg-violet-500/15 border border-violet-500/20 text-violet-300 text-[11px] font-bold tracking-wide">AI-ASSISTED • ANALYTICS</span>
+            <span class="px-2.5 py-1 rounded-full bg-violet-50 border border-violet-200 text-violet-700 text-[11px] font-semibold">AI Analytics</span>
           </div>
-          <h3 class="mt-4 font-display font-bold text-[22px] leading-none text-white">DataNudge <span class="text-violet-400">Pro</span></h3>
-          <p class="font-mono text-xs tracking-widest uppercase text-slate-400 mt-1">AI-Assisted Data Analytics Application</p>
-          <p class="mt-3 text-[13.5px] leading-relaxed text-slate-400">
-            <strong class="text-slate-200">Ask your data better questions.</strong> DataNudge Pro pairs your warehouse with a private, AI-assisted analyst — turning natural language into queries, visualizations, and narratives. No data leaves your perimeter.
-          </p>
-          <ul class="mt-4 space-y-1.5 text-[13px] text-slate-400">
-            <li class="flex gap-2"><span class="text-violet-400 mt-1">—</span> Natural-language to SQL/visuals — explainable, not magic</li>
-            <li class="flex gap-2"><span class="text-violet-400 mt-1">—</span> Local LLM option via Ollama — sensitive data stays local</li>
-            <li class="flex gap-2"><span class="text-violet-400 mt-1">—</span> Shareable briefs for execs — insight without the spreadsheet grind</li>
+          <h3 class="mt-4 font-display font-semibold text-[20px] leading-none text-slate-900">DataNudge <span class="text-violet-600">Pro</span></h3>
+          <p class="font-mono text-xs tracking-wide uppercase text-slate-500 mt-1">AI-Assisted Data Analytics</p>
+          <p class="mt-3 text-[13.5px] leading-relaxed text-slate-600"><strong class="text-slate-900">Ask your data better questions.</strong> Natural language → SQL, visuals, and narratives. Your warehouse stays put.</p>
+          <ul class="mt-4 space-y-1.5 text-[13px] text-slate-600">
+            <li class="flex gap-2"><span class="text-violet-500">—</span> Explainable, not magic — see the query</li>
+            <li class="flex gap-2"><span class="text-violet-500">—</span> Local LLM via Ollama for sensitive data</li>
+            <li class="flex gap-2"><span class="text-violet-500">—</span> Shareable briefs for execs</li>
           </ul>
           <div class="mt-4 flex flex-wrap gap-1.5">
-            <span class="px-2.5 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-xs font-mono text-violet-300">AI Analytics</span>
-            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-300">Python</span>
-            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-300">Local LLMs</span>
+            <span class="px-2.5 py-1 rounded-full bg-violet-50 border border-violet-200 text-xs font-medium text-violet-700">AI Analytics</span>
+            <span class="px-2.5 py-1 rounded-full bg-slate-50 border border-slate-200 text-xs font-medium text-slate-700">Python</span>
+            <span class="px-2.5 py-1 rounded-full bg-slate-50 border border-slate-200 text-xs font-medium text-slate-700">Local LLMs</span>
           </div>
           <div class="mt-6 flex gap-3">
-            <a href="#contact" class="flex-1 text-center bg-white text-black px-4 py-2.5 rounded-full text-sm font-bold hover:bg-slate-100 transition">See DataNudge Live</a>
-            <a href="#contact" class="px-4 py-2.5 rounded-full border border-white/15 text-sm font-semibold text-white hover:bg-white/5 transition">Demo</a>
+            <a href="#contact" class="flex-1 text-center bg-slate-900 text-white px-4 py-2.5 rounded-full text-sm font-semibold hover:bg-black transition">See DataNudge Live</a>
+            <a href="#contact" class="px-4 py-2.5 rounded-full border border-slate-200 text-sm font-medium text-slate-700 hover:bg-slate-50 transition">Demo</a>
           </div>
         </div>
       </article>
     </div>
 
-    <div class="mt-6 rounded-2xl border border-cyber-green/15 bg-cyber-green/[0.04] px-5 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
-        <div class="h-8 w-8 rounded-full bg-cyber-green text-black flex items-center justify-center">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8l-8 8M8 8l8 8"/></svg>
-        </div>
-        <p class="text-sm text-slate-300"><span class="text-white font-semibold">Need a custom build?</span> We white-label and extend these platforms for enterprise workflows.</p>
-      </div>
-      <a href="#contact" class="shrink-0 inline-flex items-center gap-2 bg-cyber-green text-black px-5 py-2 rounded-full text-sm font-bold hover:bg-[#00E67A] transition">Discuss your use case →</a>
+    <div class="mt-6 rounded-2xl bg-slate-900 text-white px-5 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm"><span class="font-semibold">Need a custom build?</span> <span class="text-slate-300">We white-label and extend these platforms for enterprise workflows.</span></p>
+      <a href="#contact" class="shrink-0 inline-flex items-center gap-2 bg-white text-ink-950 px-5 py-2 rounded-full text-sm font-semibold hover:bg-slate-100 transition">Discuss your use case →</a>
     </div>
   </div>
 </section>
 
 <!-- SERVICES -->
-<section id="services" class="relative bg-[#080B0F] border-t border-white/5">
-  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+<section id="services" class="relative bg-[#F8FAFC] border-t border-slate-200">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
     <div class="max-w-3xl mx-auto text-center mb-10">
-      <div class="inline-flex items-center gap-2 text-cyber-green font-mono text-xs tracking-[0.16em] uppercase">
-        <span class="h-px w-6 bg-cyber-green"></span> Services <span class="h-px w-6 bg-cyber-green"></span>
+      <div class="inline-flex items-center gap-2 text-emerald-700 font-mono text-xs tracking-[0.13em] uppercase">
+        <span class="h-px w-6 bg-emerald-600"></span> Services <span class="h-px w-6 bg-emerald-600"></span>
       </div>
-      <h2 class="mt-3 font-display font-bold text-[30px] sm:text-[38px] leading-none tracking-tight text-white">Two practices. One outcome — <span class="text-cyber-green">resilience</span>.</h2>
-      <p class="mt-4 text-[14.5px] leading-relaxed text-slate-400 max-w-2xl mx-auto">
-        Advisory and engineering under one roof. We test like adversaries and build like product teams — so fixes ship, not just reports.
-      </p>
+      <h2 class="mt-3 font-display font-semibold text-[30px] sm:text-[34px] leading-none tracking-tight text-slate-900">Two practices. One outcome — <span class="text-emerald-600">resilience</span>.</h2>
+      <p class="mt-4 text-[14.5px] leading-relaxed text-slate-600 max-w-2xl mx-auto">Advisory and engineering under one roof. We test like adversaries and build like product teams — so fixes ship, not just reports.</p>
     </div>
-
     <div class="grid lg:grid-cols-2 gap-6">
-      <!-- Engineering -->
-      <div class="rounded-[20px] overflow-hidden glass-strong spotlight-card">
-        <div class="h-1 w-full bg-gradient-to-r from-cyber-green to-emerald-600"></div>
-        <div class="p-6 sm:p-8">
+      <div class="rounded-[20px] overflow-hidden bg-white border border-slate-200 shadow-soft spotlight">
+        <div class="h-1 w-full bg-emerald-600"></div>
+        <div class="p-6 sm:p-7">
           <div class="flex items-center gap-3 mb-5">
-            <div class="h-10 w-10 rounded-xl bg-cyber-green text-black flex items-center justify-center">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>
-            </div>
+            <div class="h-10 w-10 rounded-xl bg-slate-900 text-white flex items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg></div>
             <div>
-              <h3 class="font-display font-bold text-white leading-none">Custom Full-Stack Development</h3>
-              <p class="font-mono text-xs tracking-widest uppercase text-cyber-green">AI-Native • Production-Grade</p>
+              <h3 class="font-display font-semibold text-slate-900 leading-none">Custom Full-Stack Development</h3>
+              <p class="font-mono text-xs tracking-wide uppercase text-emerald-700">AI-Native • Production-Grade</p>
             </div>
           </div>
-
-          <p class="text-[13.5px] leading-relaxed text-slate-400">
-            Modern web platforms and AI systems, engineered end-to-end. We lead with architecture, ship in sprints, and document for handoff. Ideal for teams that need senior talent without hiring delay.
-          </p>
-
+          <p class="text-[13.5px] leading-relaxed text-slate-600">Modern web platforms and AI systems, engineered end-to-end. Senior talent without hiring delay.</p>
           <div class="mt-6 grid grid-cols-2 gap-3">
-            <div class="rounded-xl bg-[#070A0F] border border-white/10 p-4">
+            <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
               <div class="font-mono text-[11px] tracking-widest uppercase text-slate-500">Frontend</div>
-              <div class="mt-2 flex flex-wrap gap-1.5">
-                <span class="px-2 py-1 rounded-full bg-white/5 text-xs text-slate-300">React</span>
-                <span class="px-2 py-1 rounded-full bg-white/5 text-xs text-slate-300">Next.js</span>
-                <span class="px-2 py-1 rounded-full bg-white/5 text-xs text-slate-300">Tailwind</span>
-              </div>
+              <div class="mt-2 flex flex-wrap gap-1.5"><span class="px-2 py-1 rounded-full bg-white border border-slate-200 text-xs text-slate-700">React</span><span class="px-2 py-1 rounded-full bg-white border border-slate-200 text-xs text-slate-700">Next.js</span><span class="px-2 py-1 rounded-full bg-white border border-slate-200 text-xs text-slate-700">Tailwind</span></div>
             </div>
-            <div class="rounded-xl bg-[#070A0F] border border-white/10 p-4">
+            <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
               <div class="font-mono text-[11px] tracking-widest uppercase text-slate-500">Backend & AI</div>
-              <div class="mt-2 flex flex-wrap gap-1.5">
-                <span class="px-2 py-1 rounded-full bg-white/5 text-xs text-slate-300">Python</span>
-                <span class="px-2 py-1 rounded-full bg-white/5 text-xs text-slate-300">Node.js</span>
-                <span class="px-2 py-1 rounded-full bg-white/5 text-xs text-slate-300">FastAPI</span>
-              </div>
+              <div class="mt-2 flex flex-wrap gap-1.5"><span class="px-2 py-1 rounded-full bg-white border border-slate-200 text-xs text-slate-700">Python</span><span class="px-2 py-1 rounded-full bg-white border border-slate-200 text-xs text-slate-700">Node.js</span><span class="px-2 py-1 rounded-full bg-white border border-slate-200 text-xs text-slate-700">FastAPI</span></div>
             </div>
           </div>
-
-          <ul class="mt-6 space-y-2 text-sm text-slate-400">
-            <li class="flex gap-3"><span class="text-cyber-green">✓</span> Private, local LLM deployments — Ollama + Open WebUI — for compliant AI</li>
-            <li class="flex gap-3"><span class="text-cyber-green">✓</span> API design, auth, and data pipelines built for auditability</li>
-            <li class="flex gap-3"><span class="text-cyber-green">✓</span> Clean handoff: docs, runbooks, and code your team owns</li>
+          <ul class="mt-6 space-y-2 text-sm text-slate-600">
+            <li class="flex gap-2"><span class="text-emerald-600">✓</span> Private local LLM deployments — Ollama + Open WebUI</li>
+            <li class="flex gap-2"><span class="text-emerald-600">✓</span> API design, auth, and data pipelines for auditability</li>
+            <li class="flex gap-2"><span class="text-emerald-600">✓</span> Docs, runbooks, and code your team owns</li>
           </ul>
-
           <div class="mt-7 flex gap-3">
-            <a href="#contact" class="flex-1 text-center bg-cyber-green text-black px-5 py-3 rounded-full text-sm font-bold hover:bg-[#00E67A] transition">Start a Build</a>
-            <a href="#contact" class="px-5 py-3 rounded-full border border-white/15 text-sm font-semibold text-white hover:bg-white/5 transition">View Stack</a>
+            <a href="#contact" class="flex-1 text-center bg-slate-900 text-white px-5 py-3 rounded-full text-sm font-semibold hover:bg-black transition">Start a build</a>
+            <a href="#contact" class="px-5 py-3 rounded-full border border-slate-200 text-sm font-medium text-slate-700 hover:bg-slate-50 transition">View stack</a>
           </div>
         </div>
       </div>
-
-      <!-- Security -->
-      <div class="rounded-[20px] overflow-hidden glass-strong spotlight-card">
-        <div class="h-1 w-full bg-gradient-to-r from-slate-600 to-slate-800"></div>
-        <div class="p-6 sm:p-8">
+      <div class="rounded-[20px] overflow-hidden bg-white border border-slate-200 shadow-soft spotlight">
+        <div class="h-1 w-full bg-slate-900"></div>
+        <div class="p-6 sm:p-7">
           <div class="flex items-center gap-3 mb-5">
-            <div class="h-10 w-10 rounded-xl bg-white text-black flex items-center justify-center">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
+            <div class="h-10 w-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-900"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
             <div>
-              <h3 class="font-display font-bold text-white leading-none">Comprehensive Security Testing</h3>
-              <p class="font-mono text-xs tracking-widest uppercase text-slate-400">Ethical Hacking • Vulnerability Assessment</p>
+              <h3 class="font-display font-semibold text-slate-900 leading-none">Comprehensive Security Testing</h3>
+              <p class="font-mono text-xs tracking-wide uppercase text-slate-500">Ethical Hacking • Vulnerability Assessment</p>
             </div>
           </div>
-
-          <p class="text-[13.5px] leading-relaxed text-slate-400">
-            Adversary-emulated testing that prioritizes business impact. We identify what’s exploitable, prove it safely, and guide remediation — with retest to confirm closure.
-          </p>
-
-          <div class="mt-6 rounded-xl bg-[#070A0F] border border-white/10 p-4">
+          <p class="text-[13.5px] leading-relaxed text-slate-600">Adversary-emulated testing that prioritizes business impact — proven safely, remediated, and retested.</p>
+          <div class="mt-6 rounded-xl bg-slate-50 border border-slate-200 p-4">
             <div class="font-mono text-[11px] tracking-widest uppercase text-slate-500 mb-3">Assessment Spectrum</div>
-            <div class="space-y-3">
-              <div class="flex items-center justify-between">
-                <span class="text-sm text-slate-300 flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-cyber-green"></span>External Penetration Testing</span>
-                <span class="text-xs font-mono text-slate-500">Network • Web • API</span>
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-sm text-slate-300 flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-amber-400"></span>Vulnerability Assessments</span>
-                <span class="text-xs font-mono text-slate-500">Prioritized • Evidence-backed</span>
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-sm text-slate-300 flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-sky-400"></span>Red Teaming</span>
-                <span class="text-xs font-mono text-slate-500">Full-kill-chain emulation</span>
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-sm text-slate-300 flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-violet-400"></span>OSINT & Exposure Review</span>
-                <span class="text-xs font-mono text-slate-500">People • Assets • Leaks</span>
-              </div>
+            <div class="space-y-3 text-sm">
+              <div class="flex items-center justify-between"><span class="flex items-center gap-2 text-slate-700"><span class="h-2 w-2 rounded-full bg-emerald-500"></span>External Penetration Testing</span><span class="text-xs font-mono text-slate-500">Network • Web • API</span></div>
+              <div class="flex items-center justify-between"><span class="flex items-center gap-2 text-slate-700"><span class="h-2 w-2 rounded-full bg-amber-500"></span>Vulnerability Assessments</span><span class="text-xs font-mono text-slate-500">Prioritized • Evidence-backed</span></div>
+              <div class="flex items-center justify-between"><span class="flex items-center gap-2 text-slate-700"><span class="h-2 w-2 rounded-full bg-sky-500"></span>Red Teaming</span><span class="text-xs font-mono text-slate-500">Full-kill-chain</span></div>
+              <div class="flex items-center justify-between"><span class="flex items-center gap-2 text-slate-700"><span class="h-2 w-2 rounded-full bg-violet-500"></span>OSINT & Exposure Review</span><span class="text-xs font-mono text-slate-500">People • Assets • Leaks</span></div>
             </div>
           </div>
-
-          <div class="mt-5 rounded-xl bg-amber-500/10 border border-amber-500/20 px-4 py-3 flex gap-3">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="1.7" class="shrink-0 mt-0.5"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.3L3.3 14.3a1 1 0 00.8 1.5h13.8a1 1 0 00.8-1.5L11.7 3.3a1 1 0 00-1.4 0z"/></svg>
-            <p class="text-xs leading-relaxed text-amber-200/90">Ethical, authorized testing only. All engagements are scoping-led, ROE-bound, and include executive debrief + remediation retest.</p>
+          <div class="mt-5 rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 flex gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="1.7" class="shrink-0 mt-0.5"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.3L3.3 14.3a1 1 0 00.8 1.5h13.8a1 1 0 00.8-1.5L11.7 3.3a1 1 0 00-1.4 0z"/></svg>
+            <p class="text-xs leading-relaxed text-amber-800">Authorized testing only. Scoping-led, ROE-bound, with executive debrief + retest.</p>
           </div>
-
           <div class="mt-7 flex gap-3">
-            <a href="#contact" class="flex-1 text-center bg-white text-black px-5 py-3 rounded-full text-sm font-bold hover:bg-slate-100 transition">Request Security Review</a>
-            <a href="#contact" class="px-5 py-3 rounded-full border border-white/15 text-sm font-semibold text-white hover:bg-white/5 transition">ROE</a>
+            <a href="#contact" class="flex-1 text-center bg-white border border-slate-200 text-slate-900 px-5 py-3 rounded-full text-sm font-semibold hover:bg-slate-50 transition">Request Security Review</a>
+            <a href="#contact" class="px-5 py-3 rounded-full bg-slate-900 text-white text-sm font-semibold hover:bg-black transition">ROE</a>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- Process -->
     <div class="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-3">
-      <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-4">
-        <div class="font-mono text-[11px] tracking-widest uppercase text-cyber-green">01 • Discover</div>
-        <div class="font-semibold text-white mt-1 text-sm">Scope & Threat Model</div>
-        <div class="text-xs text-slate-500 mt-1 leading-relaxed">We map your surface and model the adversary most likely to target you.</div>
-      </div>
-      <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-4">
-        <div class="font-mono text-[11px] tracking-widest uppercase text-cyber-green">02 • Validate</div>
-        <div class="font-semibold text-white mt-1 text-sm">Exploit & Evidence</div>
-        <div class="text-xs text-slate-500 mt-1 leading-relaxed">Safe proof-of-concept with business impact — no destructive payloads.</div>
-      </div>
-      <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-4">
-        <div class="font-mono text-[11px] tracking-widest uppercase text-cyber-green">03 • Harden</div>
-        <div class="font-semibold text-white mt-1 text-sm">Remediation Playbooks</div>
-        <div class="text-xs text-slate-500 mt-1 leading-relaxed">Prioritized fixes your engineers can ship this sprint.</div>
-      </div>
-      <div class="rounded-2xl bg-cyber-green text-black p-4">
-        <div class="font-mono text-[11px] tracking-widest uppercase opacity-70">04 • Prove</div>
-        <div class="font-bold mt-1 text-sm">Retest & Report</div>
-        <div class="text-xs opacity-70 mt-1 leading-relaxed">We retest, you close the loop. Board-ready reporting included.</div>
-      </div>
+      <div class="rounded-2xl bg-white border border-slate-200 p-4 shadow-soft"><div class="font-mono text-[11px] tracking-widest uppercase text-emerald-700">01 • Discover</div><div class="font-semibold text-slate-900 mt-1 text-sm">Scope & Threat Model</div><div class="text-xs text-slate-500 mt-1">We map your surface and model likely adversaries.</div></div>
+      <div class="rounded-2xl bg-white border border-slate-200 p-4 shadow-soft"><div class="font-mono text-[11px] tracking-widest uppercase text-emerald-700">02 • Validate</div><div class="font-semibold text-slate-900 mt-1 text-sm">Exploit & Evidence</div><div class="text-xs text-slate-500 mt-1">Safe PoC with business impact — no destruction.</div></div>
+      <div class="rounded-2xl bg-white border border-slate-200 p-4 shadow-soft"><div class="font-mono text-[11px] tracking-widest uppercase text-emerald-700">03 • Harden</div><div class="font-semibold text-slate-900 mt-1 text-sm">Remediation Playbooks</div><div class="text-xs text-slate-500 mt-1">Prioritized fixes your team ships this sprint.</div></div>
+      <div class="rounded-2xl bg-slate-900 text-white p-4"><div class="font-mono text-[11px] tracking-widest uppercase text-white/60">04 • Prove</div><div class="font-semibold mt-1 text-sm">Retest & Report</div><div class="text-xs text-white/60 mt-1">We retest, you close the loop. Board-ready.</div></div>
     </div>
   </div>
 </section>
 
 <!-- PODCAST -->
-<section id="podcast" class="relative overflow-hidden border-t border-white/5">
-  <div class="absolute inset-0 bg-[#0A0F0D]"></div>
-  <div class="absolute inset-0 bg-gradient-to-br from-cyber-green/[0.07] via-transparent to-emerald-900/20"></div>
-  <div class="absolute inset-0 grid-pattern opacity-10"></div>
-
-  <div class="relative max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-    <div class="rounded-[24px] overflow-hidden border border-white/10 bg-gradient-to-br from-[#0F1A14] to-[#0B1016] shadow-card">
+<section id="podcast" class="relative overflow-hidden bg-white border-t border-slate-200">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-14">
+    <div class="rounded-[24px] overflow-hidden border border-slate-200 bg-slate-50 shadow-soft">
       <div class="grid lg:grid-cols-12 gap-0">
-        <!-- Left content -->
-        <div class="lg:col-span-7 p-6 sm:p-8 lg:p-10">
-          <div class="inline-flex items-center gap-2 rounded-full border border-cyber-green/20 bg-cyber-green/10 px-3 py-1.5">
-            <span class="h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
-            <span class="font-mono text-[11px] tracking-[0.14em] uppercase text-cyber-green">On Air</span>
-            <span class="font-mono text-[11px] text-slate-400">The CTRLALTDET Podcast</span>
+        <div class="lg:col-span-7 p-6 sm:p-8 lg:p-9">
+          <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5">
+            <span class="h-2 w-2 rounded-full bg-red-500"></span>
+            <span class="font-mono text-[11px] tracking-[0.13em] uppercase text-slate-700">On Air</span>
+            <span class="font-mono text-[11px] text-slate-500">The CTRLALTDET Podcast</span>
           </div>
-
-          <h2 class="mt-5 font-display font-bold text-[30px] sm:text-[36px] leading-[0.95] tracking-tight text-white">
+          <h2 class="mt-5 font-display font-semibold text-[30px] sm:text-[34px] leading-[0.95] tracking-tight text-slate-900">
             True crime.<br>
-            <span class="text-cyber-green">Cybercrime.</span><br>
-            <span class="text-slate-400">Storytelling that secures.</span>
+            <span class="text-slate-900">Cybercrime.</span><br>
+            <span class="text-slate-500">Storytelling that secures.</span>
           </h2>
-
-          <p class="mt-4 text-[14px] leading-relaxed text-slate-400 max-w-[520px]">
-            The CTRLALTDET Podcast is a deep dive into the human side of hacking — where true crime meets digital forensics. Host <span class="text-white font-medium">Austin Allen Bale</span> unpacks breaches, scams, social engineering, and the tradecraft that stops them. No hype. Just cases, lessons, and defenses you can use.
-          </p>
-
+          <p class="mt-4 text-[14px] leading-relaxed text-slate-600 max-w-[520px]">A deep dive into the human side of hacking — breaches, scams, and the tradecraft that stops them. Host <span class="text-slate-900 font-medium">Austin Allen Bale</span> closes every episode with defenses you can use.</p>
           <div class="mt-6 flex flex-wrap gap-2">
-            <span class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-slate-300">Breach Breakdowns</span>
-            <span class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-slate-300">OSINT Files</span>
-            <span class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-slate-300">Red Team Diaries</span>
-            <span class="px-3 py-1.5 rounded-full bg-cyber-green/10 border border-cyber-green/20 text-xs font-medium text-cyber-green">Listener Q&A</span>
+            <span class="px-3 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-medium text-slate-700">Breach Breakdowns</span>
+            <span class="px-3 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-medium text-slate-700">OSINT Files</span>
+            <span class="px-3 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-medium text-slate-700">Red Team Diaries</span>
+            <span class="px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-medium text-emerald-700">Listener Q&A</span>
           </div>
-
           <div class="mt-8 flex flex-col sm:flex-row gap-3">
-            <a href="https://www.youtube.com/@CtrlAltDet" target="_blank" rel="noopener noreferrer" id="listenBtn" class="inline-flex items-center justify-center gap-2 bg-cyber-green text-black px-6 py-3 rounded-full font-bold text-sm hover:bg-[#00E67A] transition">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14l11-7z"/></svg>
+            <a href="https://www.youtube.com/@CtrlAltDet" target="_blank" rel="noopener noreferrer" id="listenBtn" class="inline-flex items-center justify-center gap-2 bg-red-600 text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-red-700 transition">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M19.6 6.2c-.3-1-1.1-1.8-2.1-2.1C15.7 3.5 12 3.5 12 3.5s-3.7 0-5.5.6c-1 .3-1.8 1.1-2.1 2.1C4 8 4 12 4 12s0 4 .4 5.8c.3 1 1.1 1.8 2.1 2.1 1.8.6 5.5.6 5.5.6s3.7 0 5.5-.6c1-.3 1.8-1.1 2.1-2.1.4-1.8.4-5.8.4-5.8s0-4-.4-5.8zM10 15.5v-7l6 3.5-6 3.5z"/></svg>
               Watch Latest Episode on YouTube
             </a>
-            <a href="https://www.youtube.com/@CtrlAltDet" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/15 text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-white/10 transition">
-              Browse All Episodes
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
+            <a href="https://www.youtube.com/@CtrlAltDet" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-white border border-slate-200 text-slate-900 px-6 py-3 rounded-full font-medium text-sm hover:bg-slate-50 transition">Browse All Episodes →</a>
           </div>
-
-          <div class="mt-6 flex items-center gap-4 text-xs font-mono text-slate-500">
-            <span class="flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a7 7 0 00-7 7v4a7 7 0 0014 0V9a7 7 0 00-7-7z"/><path d="M19 11a7 7 0 01-7 7"/><path d="M12 18v3"/></svg> New episodes biweekly</span>
-            <span>•</span>
-            <span>Available on <a href="https://www.youtube.com/@CtrlAltDet" target="_blank" rel="noopener noreferrer" class="text-red-400 hover:text-red-300 hover:underline underline-offset-2">YouTube</a>, Spotify, Apple</span>
+          <div class="mt-6 flex items-center gap-2 text-xs font-mono text-slate-500">
+            <span>New episodes biweekly</span><span class="h-1 w-1 rounded-full bg-slate-300"></span><span>Available on <a href="https://www.youtube.com/@CtrlAltDet" target="_blank" rel="noopener noreferrer" class="text-red-600 hover:underline">YouTube</a>, Spotify, Apple</span>
           </div>
         </div>
-
-        <!-- Right player -->
-        <div class="lg:col-span-5 bg-[#070A0F] border-t lg:border-t-0 lg:border-l border-white/10 p-6 sm:p-7 flex flex-col">
+        <div class="lg:col-span-5 bg-white border-t lg:border-t-0 lg:border-l border-slate-200 p-6 sm:p-6 flex flex-col">
           <div class="flex items-center justify-between mb-4">
             <span class="font-mono text-[11px] tracking-widest uppercase text-slate-500">Latest Episode</span>
-            <span class="px-2 py-1 rounded-full bg-red-500/15 border border-red-500/20 text-red-400 text-[11px] font-bold">EP 042 • 38 MIN</span>
+            <span class="px-2 py-1 rounded-full bg-slate-900 text-white text-[11px] font-medium">EP 042 • 38 MIN</span>
           </div>
-
-          <div class="rounded-2xl overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900 border border-white/10 p-[1px]">
-            <div class="rounded-[15px] bg-[#0F172A] overflow-hidden">
-              <div class="aspect-[16/10] relative bg-gradient-to-br from-slate-800 via-slate-900 to-black p-6 flex flex-col justify-end overflow-hidden">
-                <div class="absolute inset-0 opacity-20">
-                  <div class="absolute inset-0" style="background: radial-gradient(600px circle at 20% 20%, rgba(0,255,136,0.15), transparent 40%), radial-gradient(500px circle at 90% 80%, rgba(56,189,248,0.12), transparent 40%)"></div>
-                </div>
-                <!-- Waveform -->
-                <div class="absolute top-6 left-6 right-6 flex items-end gap-[3px] h-12 opacity-40">
-                  <div class="flex-1 bg-cyber-green rounded-full" style="height:30%"></div>
-                  <div class="flex-1 bg-cyber-green rounded-full" style="height:70%"></div>
-                  <div class="flex-1 bg-cyber-green rounded-full" style="height:45%"></div>
-                  <div class="flex-1 bg-cyber-green rounded-full" style="height:90%"></div>
-                  <div class="flex-1 bg-cyber-green rounded-full" style="height:60%"></div>
-                  <div class="flex-1 bg-cyber-green rounded-full" style="height:35%"></div>
-                  <div class="flex-1 bg-cyber-green rounded-full" style="height:80%"></div>
-                  <div class="flex-1 bg-cyber-green rounded-full" style="height:50%"></div>
-                  <div class="flex-1 bg-cyber-green rounded-full" style="height:65%"></div>
-                  <div class="flex-1 bg-cyber-green rounded-full" style="height:40%"></div>
-                  <div class="flex-1 bg-cyber-green rounded-full" style="height:85%"></div>
-                  <div class="flex-1 bg-cyber-green rounded-full" style="height:55%"></div>
-                  <div class="flex-1 bg-white/60 rounded-full" style="height:25%"></div>
-                  <div class="flex-1 bg-white/60 rounded-full" style="height:75%"></div>
-                  <div class="flex-1 bg-white/60 rounded-full" style="height:35%"></div>
-                </div>
-                <div class="relative">
-                  <div class="inline-flex items-center gap-2 rounded-full bg-cyber-green text-black px-2.5 py-1 text-[11px] font-bold">
-                    <span class="h-1.5 w-1.5 rounded-full bg-black animate-pulse"></span> NOW PLAYING
-                  </div>
-                  <h3 class="mt-3 font-display font-bold text-white leading-tight text-[18px]">The Shadow IT You Forgot: How One Dev Subdomain Became a Breach</h3>
-                  <p class="text-xs text-slate-400 mt-1">From forgotten staging to full takeover — and the 4 controls that would have stopped it.</p>
-                </div>
+          <div class="rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-soft">
+            <div class="aspect-[16/10] relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-6 flex flex-col justify-end overflow-hidden">
+              <div class="absolute inset-0 opacity-20" style="background: radial-gradient(500px circle at 20% 20%, rgba(255,255,255,0.12), transparent 45%)"></div>
+              <div class="absolute top-6 left-6 right-6 flex items-end gap-[3px] h-10 opacity-30">
+                <div class="flex-1 bg-white rounded-full" style="height:32%"></div><div class="flex-1 bg-white rounded-full" style="height:68%"></div><div class="flex-1 bg-white rounded-full" style="height:44%"></div><div class="flex-1 bg-white rounded-full" style="height:88%"></div><div class="flex-1 bg-white rounded-full" style="height:58%"></div><div class="flex-1 bg-white rounded-full" style="height:36%"></div><div class="flex-1 bg-white rounded-full" style="height:78%"></div><div class="flex-1 bg-white rounded-full" style="height:52%"></div>
               </div>
-              <div class="p-4 bg-[#0B1016]">
-                <div class="flex items-center gap-3">
-                  <button id="playPause" class="h-11 w-11 rounded-full bg-cyber-green text-black flex items-center justify-center hover:bg-[#00E67A] transition shrink-0">
-                    <svg id="playIcon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14l11-7z"/></svg>
-                    <svg id="pauseIcon" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
-                  </button>
-                  <div class="flex-1">
-                    <div class="h-1.5 rounded-full bg-white/10 overflow-hidden">
-                      <div id="progressBar" class="h-full w-[34%] bg-cyber-green rounded-full relative">
-                        <span class="absolute right-0 top-1/2 -translate-y-1/2 h-3 w-3 rounded-full bg-cyber-green border-2 border-black"></span>
-                      </div>
-                    </div>
-                    <div class="flex justify-between mt-1.5 font-mono text-[11px] text-slate-500">
-                      <span id="currentTime">12:47</span>
-                      <span>38:12</span>
-                    </div>
-                  </div>
-                  <button class="h-9 w-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 5L6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 010 7"/><path d="M19 5a9 9 0 010 14"/></svg>
-                  </button>
+              <div class="relative">
+                <div class="inline-flex items-center gap-2 rounded-full bg-white text-slate-900 px-2.5 py-1 text-[11px] font-semibold"><span class="h-1.5 w-1.5 rounded-full bg-red-600"></span> NOW PLAYING</div>
+                <h3 class="mt-3 font-display font-semibold text-white leading-tight text-[17px]">The Shadow IT You Forgot: How One Dev Subdomain Became a Breach</h3>
+                <p class="text-xs text-slate-300 mt-1">Forgotten staging to full takeover — and the 4 controls that would have stopped it.</p>
+              </div>
+            </div>
+            <div class="p-4 bg-white">
+              <div class="flex items-center gap-3">
+                <button id="playPause" class="h-11 w-11 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-black transition shrink-0">
+                  <svg id="playIcon" width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 5.14v14l11-7z"/></svg>
+                  <svg id="pauseIcon" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+                </button>
+                <div class="flex-1">
+                  <div class="h-1.5 rounded-full bg-slate-100 overflow-hidden"><div id="progressBar" class="h-full w-[34%] bg-slate-900 rounded-full relative"><span class="absolute right-0 top-1/2 -translate-y-1/2 h-3 w-3 rounded-full bg-slate-900 border-2 border-white shadow"></span></div></div>
+                  <div class="flex justify-between mt-1.5 font-mono text-[11px] text-slate-500"><span id="currentTime">12:47</span><span>38:12</span></div>
                 </div>
-                <div class="mt-4 flex gap-2">
-                  <a href="https://www.youtube.com/@CtrlAltDet" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-red-600 text-white py-2.5 rounded-full text-xs font-bold hover:bg-red-700 transition flex items-center justify-center gap-1.5">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 6.2c-.3-1-1.1-1.8-2.1-2.1C15.7 3.5 12 3.5 12 3.5s-3.7 0-5.5.6c-1 .3-1.8 1.1-2.1 2.1C4 8 4 12 4 12s0 4 .4 5.8c.3 1 1.1 1.8 2.1 2.1 1.8.6 5.5.6 5.5.6s3.7 0 5.5-.6c1-.3 1.8-1.1 2.1-2.1.4-1.8.4-5.8.4-5.8s0-4-.4-5.8zM10 15.5v-7l6 3.5-6 3.5z"/></svg>
-                    Watch on YouTube
-                  </a>
-                  <a href="https://www.youtube.com/@CtrlAltDet" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-white/5 border border-white/15 text-white py-2.5 rounded-full text-xs font-bold hover:bg-white/10 transition">Visit Channel</a>
-                </div>
+                <a href="https://www.youtube.com/@CtrlAltDet" target="_blank" rel="noopener noreferrer" class="h-9 w-9 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center hover:bg-slate-200 transition">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 6.2c-.3-1-1.1-1.8-2.1-2.1C15.7 3.5 12 3.5 12 3.5s-3.7 0-5.5.6c-1 .3-1.8 1.1-2.1 2.1C4 8 4 12 4 12s0 4 .4 5.8c.3 1 1.1 1.8 2.1 2.1 1.8.6 5.5.6 5.5.6s3.7 0 5.5-.6c1-.3 1.8-1.1 2.1-2.1.4-1.8.4-5.8.4-5.8s0-4-.4-5.8zM10 15.5v-7l6 3.5-6 3.5z"/></svg>
+                </a>
+              </div>
+              <div class="mt-4 flex gap-2">
+                <a href="https://www.youtube.com/@CtrlAltDet" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-red-600 text-white py-2.5 rounded-full text-xs font-semibold hover:bg-red-700 transition flex items-center justify-center gap-1.5">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M19.6 6.2c-.3-1-1.1-1.8-2.1-2.1C15.7 3.5 12 3.5 12 3.5s-3.7 0-5.5.6c-1 .3-1.8 1.1-2.1 2.1C4 8 4 12 4 12s0 4 .4 5.8c.3 1 1.1 1.8 2.1 2.1 1.8.6 5.5.6 5.5.6s3.7 0 5.5-.6c1-.3 1.8-1.1 2.1-2.1.4-1.8.4-5.8.4-5.8s0-4-.4-5.8zM10 15.5v-7l6 3.5-6 3.5z"/></svg>
+                  Watch on YouTube
+                </a>
+                <a href="https://www.youtube.com/@CtrlAltDet" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-white border border-slate-200 text-slate-900 py-2.5 rounded-full text-xs font-semibold hover:bg-slate-50 transition">Visit Channel</a>
               </div>
             </div>
           </div>
-
-          <div class="mt-4 rounded-xl bg-amber-500/10 border border-amber-500/15 px-3 py-2.5 flex gap-2.5">
-            <span class="text-amber-400 mt-0.5">⚡</span>
-            <p class="text-xs leading-relaxed text-amber-100/80"><span class="font-semibold text-amber-200">Founder’s note:</span> Every episode ends with actionable defenses — not just stories.</p>
+          <div class="mt-4 rounded-xl bg-amber-50 border border-amber-200 px-3 py-2.5 flex gap-2.5">
+            <span class="text-amber-600">⚡</span>
+            <p class="text-xs leading-relaxed text-amber-800"><span class="font-semibold">Founder’s note:</span> Every episode ends with defenses you can use.</p>
           </div>
         </div>
       </div>
@@ -870,132 +711,78 @@ tailwind.config = {
   </div>
 </section>
 
-
-<!-- BOOKING / CALENDLY -->
-<section id="booking" class="relative bg-[#080B0F] border-t border-white/5">
-  <div class="absolute inset-0 grid-pattern opacity-10"></div>
-  <div class="relative max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+<!-- BOOKING -->
+<section id="booking" class="relative bg-[#F8FAFC] border-t border-slate-200">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-14">
     <div class="grid lg:grid-cols-12 gap-8 items-start">
       <div class="lg:col-span-5">
-        <div class="inline-flex items-center gap-2 text-cyber-green font-mono text-xs tracking-[0.16em] uppercase">
-          <span class="h-px w-6 bg-cyber-green"></span> Schedule Directly
-        </div>
-        <h2 class="mt-3 font-display font-bold text-[30px] sm:text-[36px] leading-none tracking-tight text-white">
-          Book time with<br>
-          <span class="text-cyber-green">Austin Allen Bale.</span>
-        </h2>
-        <p class="mt-4 text-[14px] leading-relaxed text-slate-400">
-          Skip the back-and-forth. Choose a 30-minute slot for scoping, threat-model review, or architecture deep-dive. You’ll get a calendar invite, ROE prep checklist, and NDA if needed.
-        </p>
-        <div class="mt-6 space-y-3">
-          <div class="flex items-center gap-3 text-sm text-slate-300">
-            <span class="h-8 w-8 rounded-full bg-cyber-green/10 border border-cyber-green/20 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00FF88" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l2 2"/></svg></span>
-            30-min • Google Meet or Zoom • Recording optional
-          </div>
-          <div class="flex items-center gap-3 text-sm text-slate-300">
-            <span class="h-8 w-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
-            NDA-ready • ROE discussed on call • No sales pressure
-          </div>
-          <div class="flex items-center gap-3 text-sm text-slate-300">
-            <span class="h-8 w-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-            Prefer in-person? Lincoln Park + SE Michigan on-site available
-          </div>
+        <div class="inline-flex items-center gap-2 text-emerald-700 font-mono text-xs tracking-[0.13em] uppercase"><span class="h-px w-6 bg-emerald-600"></span> Schedule Directly</div>
+        <h2 class="mt-3 font-display font-semibold text-[30px] sm:text-[34px] leading-none tracking-tight text-slate-900">Book time with<br><span class="text-slate-900">Austin Allen Bale.</span></h2>
+        <p class="mt-4 text-[14px] leading-relaxed text-slate-600">Skip the back-and-forth. Choose a 30-minute slot for scoping, threat-model review, or architecture deep-dive. Calendar invite + ROE prep included.</p>
+        <div class="mt-6 space-y-3 text-sm text-slate-700">
+          <div class="flex items-center gap-3"><span class="h-8 w-8 rounded-full bg-white border border-slate-200 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l2 2"/></svg></span> 30-min • Google Meet or Zoom • Recording optional</div>
+          <div class="flex items-center gap-3"><span class="h-8 w-8 rounded-full bg-white border border-slate-200 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span> NDA-ready • ROE discussed • No sales pressure</div>
+          <div class="flex items-center gap-3"><span class="h-8 w-8 rounded-full bg-white border border-slate-200 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span> Lincoln Park + SE Michigan on-site available</div>
         </div>
         <div class="mt-7 flex flex-wrap gap-2">
-          <button onclick="openCalendly()" class="inline-flex items-center gap-2 bg-cyber-green text-black px-6 py-3 rounded-full font-bold text-sm hover:bg-[#00E67A] transition">Open Calendly Popup</button>
-          <a href="#contact" class="inline-flex items-center gap-2 bg-white/5 border border-white/15 text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-white/10 transition">Send a message instead →</a>
+          <button onclick="openCalendly()" class="inline-flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-black transition">Open Calendly Popup</button>
+          <a href="#contact" class="inline-flex items-center gap-2 bg-white border border-slate-200 text-slate-900 px-6 py-3 rounded-full font-medium text-sm hover:bg-slate-50 transition">Send a message instead →</a>
         </div>
-        <p class="mt-4 text-xs font-mono text-slate-500">Calendly: <span class="text-slate-300">calendly.com/ctrlaltdet/30min</span> • Reschedule anytime • Change the URL in one place to use your real link.</p>
+        <p class="mt-4 text-xs font-mono text-slate-500">Calendly: <span class="text-slate-700">calendly.com/ctrlaltdet/30min</span> • Reschedule anytime</p>
       </div>
       <div class="lg:col-span-7">
-        <div class="rounded-[20px] overflow-hidden glass-strong border border-white/10 shadow-card">
-          <div class="px-5 py-4 border-b border-white/10 bg-white/[0.03] flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <img src="logo-icon.svg" alt="" class="h-7 w-7 rounded-lg">
-              <span class="font-display font-bold text-sm text-white">CTRLALTDET LLC • 30 Minute Meeting</span>
-            </div>
-            <span class="hidden sm:inline-flex items-center gap-1.5 text-xs font-mono text-cyber-green"><span class="h-2 w-2 rounded-full bg-cyber-green animate-pulse"></span> LIVE SCHEDULING</span>
+        <div class="rounded-[20px] overflow-hidden bg-white border border-slate-200 shadow-card">
+          <div class="px-5 py-4 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
+            <div class="flex items-center gap-2"><img src="logo-icon.svg" alt="" class="h-7 w-7 rounded-lg"><span class="font-display font-semibold text-sm text-slate-900">CTRLALTDET LLC • 30 Minute Meeting</span></div>
+            <span class="hidden sm:inline-flex items-center gap-1.5 text-xs font-mono text-emerald-700"><span class="h-2 w-2 rounded-full bg-emerald-500"></span> LIVE SCHEDULING</span>
           </div>
-          <!-- Calendly inline widget -->
-          <div class="calendly-inline-widget" data-url="https://calendly.com/ctrlaltdet/30min?hide_gdpr_banner=1&background_color=0b1016&text_color=e2e8f0&primary_color=00ff88" style="min-width:320px;height:640px;"></div>
-          <div class="px-4 py-3 bg-[#070A0F] border-t border-white/10 flex items-center justify-between text-xs font-mono">
-            <span class="text-slate-500">Powered by <span class="text-white">Calendly</span> • Timezone auto-detected</span>
-            <button onclick="openCalendly()" class="text-cyber-green hover:underline">Pop-out →</button>
-          </div>
+          <div class="calendly-inline-widget" data-url="https://calendly.com/ctrlaltdet/30min?hide_gdpr_banner=1&background_color=f8fafc&text_color=0f172a&primary_color=10b981" style="min-width:320px;height:640px;"></div>
+          <div class="px-4 py-3 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs font-mono text-slate-500"><span>Powered by <span class="text-slate-900">Calendly</span> • Timezone auto-detected</span><button onclick="openCalendly()" class="text-emerald-700 hover:underline">Pop-out →</button></div>
         </div>
-        <p class="mt-3 text-center text-[11px] font-mono text-slate-600">No Calendly account yet? Replace the <code class="px-1 py-0.5 rounded bg-white/5 text-slate-300">data-url</code> with your real link — or keep the form above.</p>
+        <p class="mt-3 text-center text-[11px] font-mono text-slate-500">Replace the <code class="px-1 py-0.5 rounded bg-white border border-slate-200">data-url</code> with your real link if different.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="relative bg-[#040507] border-t border-white/5">
-  <div class="absolute inset-0 grid-pattern opacity-10"></div>
-  <div class="relative max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+<section id="contact" class="relative bg-white border-t border-slate-200">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
     <div class="grid lg:grid-cols-12 gap-8 lg:gap-10">
-      <!-- Left info -->
       <div class="lg:col-span-5">
-        <div class="inline-flex items-center gap-2 text-cyber-green font-mono text-xs tracking-[0.16em] uppercase">
-          <span class="h-px w-6 bg-cyber-green"></span> Contact & Inquiries
-        </div>
-        <h2 class="mt-3 font-display font-bold text-[30px] sm:text-[38px] leading-none tracking-tight text-white">
-          Let’s secure<br>
-          <span class="text-cyber-green">what’s next.</span>
-        </h2>
-        <p class="mt-4 text-[14px] leading-relaxed text-slate-400">
-          Tell us about your perimeter, your stack, and your risk window. We respond within one business day with a scoped plan — no generic sales deck.
-        </p>
-
+        <div class="inline-flex items-center gap-2 text-emerald-700 font-mono text-xs tracking-[0.13em] uppercase"><span class="h-px w-6 bg-emerald-600"></span> Contact & Inquiries</div>
+        <h2 class="mt-3 font-display font-semibold text-[30px] sm:text-[36px] leading-none tracking-tight text-slate-900">Let’s secure<br><span class="text-slate-900">what’s next.</span></h2>
+        <p class="mt-4 text-[14px] leading-relaxed text-slate-600">Tell us about your perimeter, stack, and risk window. We respond within one business day with a scoped plan.</p>
         <div class="mt-8 space-y-4">
-          <div class="flex gap-4 rounded-2xl glass p-4">
-            <div class="h-10 w-10 rounded-xl bg-cyber-green text-black flex items-center justify-center shrink-0">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div>
-              <div class="text-sm font-semibold text-white">Operating Base</div>
-              <div class="text-sm text-slate-400">Lincoln Park, Michigan — United States</div>
-              <div class="text-xs font-mono text-slate-500 mt-1">Remote B2B nationwide • On-site in Southeast Michigan by arrangement</div>
-            </div>
+          <div class="flex gap-4 rounded-2xl bg-slate-50 border border-slate-200 p-4">
+            <div class="h-10 w-10 rounded-xl bg-slate-900 text-white flex items-center justify-center shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><div class="text-sm font-semibold text-slate-900">Operating Base</div><div class="text-sm text-slate-600">Lincoln Park, Michigan — United States</div><div class="text-xs font-mono text-slate-500 mt-1">Remote B2B nationwide • On-site in SE Michigan by arrangement</div></div>
           </div>
-
-          <div class="flex gap-4 rounded-2xl glass p-4">
-            <div class="h-10 w-10 rounded-xl bg-white text-black flex items-center justify-center shrink-0">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z"/><path d="M4 8l8 5 8-5"/></svg>
-            </div>
-            <div>
-              <div class="text-sm font-semibold text-white">Response Time</div>
-              <div class="text-sm text-slate-400"><span class="text-white font-medium">Under 24 hours</span> for qualified B2B inquiries</div>
-              <div class="text-xs font-mono text-slate-500 mt-1">Mon–Fri • 9:00 AM–6:00 PM ET</div>
-            </div>
+          <div class="flex gap-4 rounded-2xl bg-slate-50 border border-slate-200 p-4">
+            <div class="h-10 w-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="1.6"><path d="M4 4h16v16H4z"/><path d="M4 8l8 5 8-5"/></svg></div>
+            <div><div class="text-sm font-semibold text-slate-900">Response Time</div><div class="text-sm text-slate-600"><span class="text-slate-900 font-medium">Under 24 hours</span> for qualified B2B inquiries</div><div class="text-xs font-mono text-slate-500 mt-1">Mon–Fri • 9:00 AM–6:00 PM ET</div></div>
           </div>
-
-          <div class="rounded-2xl bg-white/[0.03] border border-white/10 p-4">
+          <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4">
             <div class="font-mono text-[11px] tracking-widest uppercase text-slate-500 mb-2">What happens next?</div>
-            <ol class="space-y-2 text-sm text-slate-400">
-              <li class="flex gap-2"><span class="text-cyber-green font-bold">1.</span> We review and confirm fit within 24h</li>
-              <li class="flex gap-2"><span class="text-cyber-green font-bold">2.</span> 30-min scoping call & ROE draft</li>
-              <li class="flex gap-2"><span class="text-cyber-green font-bold">3.</span> Fixed-scope proposal with timeline</li>
+            <ol class="space-y-2 text-sm text-slate-600">
+              <li class="flex gap-2"><span class="text-emerald-600 font-semibold">1.</span> We review and confirm fit within 24h</li>
+              <li class="flex gap-2"><span class="text-emerald-600 font-semibold">2.</span> 30-min scoping call & ROE draft</li>
+              <li class="flex gap-2"><span class="text-emerald-600 font-semibold">3.</span> Fixed-scope proposal with timeline</li>
             </ol>
           </div>
         </div>
       </div>
 
-      <!-- Form -->
       <div class="lg:col-span-7">
-        <div class="rounded-[20px] overflow-hidden glass-strong shadow-card">
-          <div class="px-6 sm:px-8 py-6 border-b border-white/10 flex items-center justify-between">
+        <div class="rounded-[20px] overflow-hidden bg-white border border-slate-200 shadow-card">
+          <div class="px-6 sm:px-8 py-5 border-b border-slate-200 flex items-center justify-between bg-slate-50">
             <div>
-              <h3 class="font-display font-bold text-white">Start a Conversation</h3>
+              <h3 class="font-display font-semibold text-slate-900">Start a Conversation</h3>
               <p class="text-xs font-mono text-slate-500">B2B inquiries only • NDA available on request</p>
             </div>
-            <span class="hidden sm:inline-flex items-center gap-1.5 text-xs font-mono text-cyber-green">
-              <span class="h-2 w-2 rounded-full bg-cyber-green animate-pulse"></span> Encrypted intake
-            </span>
+            <span class="hidden sm:inline-flex items-center gap-1.5 text-xs font-mono text-emerald-700"><span class="h-2 w-2 rounded-full bg-emerald-500"></span> Encrypted intake</span>
           </div>
-
           <form id="leadForm" class="p-6 sm:p-8 space-y-4" novalidate action="https://formsubmit.co/austinjune72@gmail.com" method="POST">
-            <!-- Honeypot - leave empty -->
             <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
             <input type="hidden" name="_subject" value="CTRLALTDET LLC — New B2B Inquiry">
             <input type="hidden" name="_captcha" value="false">
@@ -1003,23 +790,22 @@ tailwind.config = {
             <input type="hidden" name="_next" value="https://ctrlaltdet.github.io/ctrlaltdet/?sent=1">
             <div class="grid sm:grid-cols-2 gap-4">
               <div>
-                <label for="name" class="block text-xs font-medium tracking-widest uppercase text-slate-400 mb-1.5">Full Name *</label>
-                <input id="name" name="name" required placeholder="Jordan Avery" class="w-full rounded-xl bg-[#070A0F] border border-white/10 px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-cyber-green/50 focus:ring-2 focus:ring-cyber-green/20 transition" />
+                <label for="name" class="block text-xs font-medium tracking-widest uppercase text-slate-500 mb-1.5">Full Name *</label>
+                <input id="name" name="name" required placeholder="Jordan Avery" class="w-full rounded-xl bg-white border border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/15 transition" />
               </div>
               <div>
-                <label for="company" class="block text-xs font-medium tracking-widest uppercase text-slate-400 mb-1.5">Company *</label>
-                <input id="company" name="company" required placeholder="Acme Industries" class="w-full rounded-xl bg-[#070A0F] border border-white/10 px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-cyber-green/50 focus:ring-2 focus:ring-cyber-green/20 transition" />
+                <label for="company" class="block text-xs font-medium tracking-widest uppercase text-slate-500 mb-1.5">Company *</label>
+                <input id="company" name="company" required placeholder="Acme Industries" class="w-full rounded-xl bg-white border border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/15 transition" />
               </div>
             </div>
-
             <div class="grid sm:grid-cols-2 gap-4">
               <div>
-                <label for="email" class="block text-xs font-medium tracking-widest uppercase text-slate-400 mb-1.5">Work Email *</label>
-                <input id="email" name="email" type="email" required placeholder="jordan@acme.example" class="w-full rounded-xl bg-[#070A0F] border border-white/10 px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-cyber-green/50 focus:ring-2 focus:ring-cyber-green/20 transition" />
+                <label for="email" class="block text-xs font-medium tracking-widest uppercase text-slate-500 mb-1.5">Work Email *</label>
+                <input id="email" name="email" type="email" required placeholder="jordan@acme.example" class="w-full rounded-xl bg-white border border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/15 transition" />
               </div>
               <div>
-                <label for="interest" class="block text-xs font-medium tracking-widest uppercase text-slate-400 mb-1.5">Interest *</label>
-                <select id="interest" name="interest" required class="w-full rounded-xl bg-[#070A0F] border border-white/10 px-4 py-3 text-sm text-white focus:outline-none focus:border-cyber-green/50 focus:ring-2 focus:ring-cyber-green/20 transition">
+                <label for="interest" class="block text-xs font-medium tracking-widest uppercase text-slate-500 mb-1.5">Interest *</label>
+                <select id="interest" name="interest" required class="w-full rounded-xl bg-white border border-slate-200 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/15 transition">
                   <option value="">Select a focus</option>
                   <option>RedForge — External Attack Surface</option>
                   <option>ReconFramework v2.0 — Recon Automation</option>
@@ -1031,39 +817,28 @@ tailwind.config = {
                 </select>
               </div>
             </div>
-
             <div>
-              <label for="message" class="block text-xs font-medium tracking-widest uppercase text-slate-400 mb-1.5">Project Context *</label>
-              <textarea id="message" name="message" required rows="4" placeholder="Tell us about your external surface, current stack, and what 'secure' looks like for you in the next 90 days..." class="w-full rounded-xl bg-[#070A0F] border border-white/10 px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-cyber-green/50 focus:ring-2 focus:ring-cyber-green/20 transition resize-none"></textarea>
-              <div class="flex justify-between mt-1.5">
-                <span class="text-[11px] font-mono text-slate-600">We never share your data. Local-first by principle.</span>
-                <span class="text-[11px] font-mono text-slate-600" id="charCount">0 / 600</span>
-              </div>
+              <label for="message" class="block text-xs font-medium tracking-widest uppercase text-slate-500 mb-1.5">Project Context *</label>
+              <textarea id="message" name="message" required rows="4" placeholder="Tell us about your external surface, current stack, and what 'secure' looks like for you in the next 90 days..." class="w-full rounded-xl bg-white border border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/15 transition resize-none"></textarea>
+              <div class="flex justify-between mt-1.5"><span class="text-[11px] font-mono text-slate-500">We never share your data. Local-first by principle.</span><span class="text-[11px] font-mono text-slate-500" id="charCount">0 / 600</span></div>
             </div>
-
-            <label class="flex items-start gap-3 rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3 cursor-pointer">
-              <input type="checkbox" required class="mt-0.5 h-4 w-4 rounded border-white/20 bg-[#070A0F] text-cyber-green focus:ring-cyber-green/30" />
-              <span class="text-xs leading-relaxed text-slate-400">I confirm this is an authorized B2B inquiry and I have permission to discuss the assets referenced. I agree to the engagement being bound by a formal Rule of Engagement.</span>
+            <label class="flex items-start gap-3 rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 cursor-pointer">
+              <input type="checkbox" required class="mt-0.5 h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
+              <span class="text-xs leading-relaxed text-slate-600">I confirm this is an authorized B2B inquiry and I have permission to discuss the assets referenced. I agree to a formal Rule of Engagement.</span>
             </label>
-
             <div id="formStatus" class="hidden rounded-xl px-4 py-3 text-sm"></div>
-            <button type="submit" id="submitBtn" class="w-full inline-flex items-center justify-center gap-2 bg-cyber-green text-black py-3.5 rounded-full font-bold text-sm hover:bg-[#00E67A] hover:shadow-glow transition disabled:opacity-60 disabled:cursor-not-allowed">
-              <span id="submitLabel">Audit Your Infrastructure</span>
-              <svg id="submitArrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <button type="submit" id="submitBtn" class="w-full inline-flex items-center justify-center gap-2 bg-slate-900 text-white py-3.5 rounded-full font-semibold text-sm hover:bg-black transition disabled:opacity-60 disabled:cursor-not-allowed">
+              <span id="submitLabel">Audit your infrastructure</span>
+              <svg id="submitArrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               <svg id="submitSpinner" class="hidden animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" opacity="0.25"/><path d="M12 2a10 10 0 0110 10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
             </button>
-
-            <p class="text-center text-[11px] font-mono text-slate-600">
-              Wired to <code class="px-1 py-0.5 rounded bg-cyber-green/10 border border-cyber-green/20 text-cyber-green">FormSubmit → austinjune72@gmail.com</code> • Free, no backend needed • Prefer email? <a href="mailto:hello@ctrlaltdet.com" class="text-slate-400 hover:text-cyber-green underline underline-offset-2">hello@ctrlaltdet.com</a> • Lincoln Park, MI
-            </p>
+            <p class="text-center text-[11px] font-mono text-slate-500">Wired to FormSubmit → austinjune72@gmail.com • Prefer email? <a href="mailto:hello@ctrlaltdet.com" class="text-slate-600 hover:text-slate-900 underline underline-offset-2">hello@ctrlaltdet.com</a> • Lincoln Park, MI</p>
           </form>
         </div>
-
-        <!-- Trust strip -->
         <div class="mt-4 flex flex-wrap items-center justify-center gap-2 text-[11px] font-mono text-slate-500">
-          <span class="px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10">Ethical • Authorized testing only</span>
-          <span class="px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10">Fixed-scope • No retainer traps</span>
-          <span class="px-3 py-1.5 rounded-full bg-cyber-green/10 border border-cyber-green/20 text-cyber-green">NDA-ready</span>
+          <span class="px-3 py-1.5 rounded-full bg-white border border-slate-200">Ethical • Authorized only</span>
+          <span class="px-3 py-1.5 rounded-full bg-white border border-slate-200">Fixed-scope • No retainer traps</span>
+          <span class="px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700">NDA-ready</span>
         </div>
       </div>
     </div>
@@ -1071,72 +846,67 @@ tailwind.config = {
 </section>
 
 <!-- FOOTER -->
-<footer class="border-t border-white/10 bg-[#080B0F]">
+<footer class="border-t border-slate-200 bg-[#F8FAFC]">
   <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
     <div class="grid lg:grid-cols-12 gap-8">
       <div class="lg:col-span-5">
         <div class="flex items-center gap-3">
-          <img src="logo-icon.svg" alt="CTRLALTDET LLC" class="h-9 w-9 rounded-lg ring-1 ring-white/10">
+          <img src="logo-icon.svg" alt="CTRLALTDET LLC" class="h-9 w-9 rounded-xl ring-1 ring-slate-200">
           <div>
-            <div class="font-display font-bold text-white tracking-tight">CTRLALTDET LLC</div>
+            <div class="font-display font-semibold text-slate-900 tracking-tight">CTRLALTDET LLC</div>
             <div class="font-mono text-[11px] tracking-widest uppercase text-slate-500">Lincoln Park, Michigan</div>
           </div>
-          <img src="logo.svg" alt="" class="hidden sm:block h-8 ml-4 opacity-80" aria-hidden="true">
         </div>
-        <p class="mt-4 text-sm leading-relaxed text-slate-500 max-w-md">
-          Cybersecurity and AI engineering. Offensive security that hardens; software that ships. Operating from Lincoln Park, MI and serving B2B teams nationwide.
-        </p>
+        <p class="mt-4 text-sm leading-relaxed text-slate-600 max-w-md">Cybersecurity and AI engineering. Offensive security that hardens; software that ships. Operating from Lincoln Park, MI and serving B2B teams nationwide.</p>
         <div class="mt-4 flex gap-2">
-          <a href="#contact" class="h-8 w-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition" aria-label="Email">
+          <a href="#contact" class="h-8 w-8 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition" aria-label="Email">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v16H4z"/><path d="M4 8l8 5 8-5"/></svg>
           </a>
-          <a href="https://www.youtube.com/@CtrlAltDet" target="_blank" rel="noopener noreferrer" class="h-8 w-8 rounded-full bg-red-600/20 border border-red-600/30 flex items-center justify-center hover:bg-red-600 hover:text-white text-red-400 transition" aria-label="YouTube">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 6.2c-.3-1-1.1-1.8-2.1-2.1C15.7 3.5 12 3.5 12 3.5s-3.7 0-5.5.6c-1 .3-1.8 1.1-2.1 2.1C4 8 4 12 4 12s0 4 .4 5.8c.3 1 1.1 1.8 2.1 2.1 1.8.6 5.5.6 5.5.6s3.7 0 5.5-.6c1-.3 1.8-1.1 2.1-2.1.4-1.8.4-5.8.4-5.8s0-4-.4-5.8zM10 15.5v-7l6 3.5-6 3.5z"/></svg>
+          <a href="https://www.youtube.com/@CtrlAltDet" target="_blank" rel="noopener noreferrer" class="h-8 w-8 rounded-full bg-red-600 text-white flex items-center justify-center hover:bg-red-700 transition" aria-label="YouTube">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M19.6 6.2c-.3-1-1.1-1.8-2.1-2.1C15.7 3.5 12 3.5 12 3.5s-3.7 0-5.5.6c-1 .3-1.8 1.1-2.1 2.1C4 8 4 12 4 12s0 4 .4 5.8c.3 1 1.1 1.8 2.1 2.1 1.8.6 5.5.6 5.5.6s3.7 0 5.5-.6c1-.3 1.8-1.1 2.1-2.1.4-1.8.4-5.8.4-5.8s0-4-.4-5.8zM10 15.5v-7l6 3.5-6 3.5z"/></svg>
           </a>
-          <a href="#products" class="h-8 w-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition" aria-label="Products">
+          <a href="#products" class="h-8 w-8 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition" aria-label="Products">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </a>
         </div>
       </div>
-
       <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
         <div>
-          <div class="font-mono text-xs tracking-widest uppercase text-white">Explore</div>
-          <ul class="mt-3 space-y-2 text-sm text-slate-500">
-            <li><a href="#about" class="hover:text-cyber-green transition">About & Leadership</a></li>
-            <li><a href="#products" class="hover:text-cyber-green transition">Products</a></li>
-            <li><a href="#services" class="hover:text-cyber-green transition">Services</a></li>
-            <li><a href="#podcast" class="hover:text-cyber-green transition">Podcast</a></li>
+          <div class="font-mono text-xs tracking-widest uppercase text-slate-900">Explore</div>
+          <ul class="mt-3 space-y-2 text-sm text-slate-600">
+            <li><a href="#about" class="hover:text-slate-900 transition">About & Leadership</a></li>
+            <li><a href="#products" class="hover:text-slate-900 transition">Products</a></li>
+            <li><a href="#services" class="hover:text-slate-900 transition">Services</a></li>
+            <li><a href="#podcast" class="hover:text-slate-900 transition">Podcast</a></li>
           </ul>
         </div>
         <div>
-          <div class="font-mono text-xs tracking-widest uppercase text-white">Products</div>
-          <ul class="mt-3 space-y-2 text-sm text-slate-500">
-            <li><a href="#products" class="hover:text-white transition">RedForge</a></li>
-            <li><a href="#products" class="hover:text-white transition">ReconFramework v2.0</a></li>
-            <li><a href="#products" class="hover:text-white transition">Silvr — “silver”</a></li>
-            <li><a href="#products" class="hover:text-white transition">DataNudge Pro</a></li>
+          <div class="font-mono text-xs tracking-widest uppercase text-slate-900">Products</div>
+          <ul class="mt-3 space-y-2 text-sm text-slate-600">
+            <li><a href="#products" class="hover:text-slate-900 transition">RedForge</a></li>
+            <li><a href="#products" class="hover:text-slate-900 transition">ReconFramework v2.0</a></li>
+            <li><a href="#products" class="hover:text-slate-900 transition">Silvr — “silver”</a></li>
+            <li><a href="#products" class="hover:text-slate-900 transition">DataNudge Pro</a></li>
           </ul>
         </div>
         <div>
-          <div class="font-mono text-xs tracking-widest uppercase text-white">Contact</div>
-          <ul class="mt-3 space-y-2 text-sm text-slate-500">
+          <div class="font-mono text-xs tracking-widest uppercase text-slate-900">Contact</div>
+          <ul class="mt-3 space-y-2 text-sm text-slate-600">
             <li>Lincoln Park, MI</li>
-            <li><a href="mailto:hello@ctrlaltdet.com" class="hover:text-cyber-green transition">hello@ctrlaltdet.com</a></li>
-            <li><a href="https://www.youtube.com/@CtrlAltDet" target="_blank" rel="noopener noreferrer" class="hover:text-red-400 transition flex items-center gap-1.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 6.2c-.3-1-1.1-1.8-2.1-2.1C15.7 3.5 12 3.5 12 3.5s-3.7 0-5.5.6c-1 .3-1.8 1.1-2.1 2.1C4 8 4 12 4 12s0 4 .4 5.8c.3 1 1.1 1.8 2.1 2.1 1.8.6 5.5.6 5.5.6s3.7 0 5.5-.6c1-.3 1.8-1.1 2.1-2.1.4-1.8.4-5.8.4-5.8s0-4-.4-5.8zM10 15.5v-7l6 3.5-6 3.5z"/></svg> youtube.com/@CtrlAltDet</a></li>
-            <li><a href="#contact" class="inline-flex mt-1 bg-cyber-green text-black px-4 py-1.5 rounded-full text-xs font-bold hover:bg-[#00E67A] transition">Audit Your Infrastructure</a></li>
+            <li><a href="mailto:hello@ctrlaltdet.com" class="hover:text-slate-900 transition">hello@ctrlaltdet.com</a></li>
+            <li><a href="https://www.youtube.com/@CtrlAltDet" target="_blank" rel="noopener noreferrer" class="hover:text-red-600 transition flex items-center gap-1.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 6.2c-.3-1-1.1-1.8-2.1-2.1C15.7 3.5 12 3.5 12 3.5s-3.7 0-5.5.6c-1 .3-1.8 1.1-2.1 2.1C4 8 4 12 4 12s0 4 .4 5.8c.3 1 1.1 1.8 2.1 2.1 1.8.6 5.5.6 5.5.6s3.7 0 5.5-.6c1-.3 1.8-1.1 2.1-2.1.4-1.8.4-5.8.4-5.8s0-4-.4-5.8zM10 15.5v-7l6 3.5-6 3.5z"/></svg> youtube.com/@CtrlAltDet</a></li>
+            <li><a href="#contact" class="inline-flex mt-1 bg-slate-900 text-white px-4 py-1.5 rounded-full text-xs font-semibold hover:bg-black transition">Audit your infrastructure</a></li>
           </ul>
         </div>
       </div>
     </div>
-
-    <div class="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-slate-600">
+    <div class="mt-10 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-slate-500">
       <div>© 2026 CTRLALTDET LLC. All rights reserved. • Founded by Austin Allen Bale • Lincoln Park, MI</div>
       <div class="flex gap-4">
-        <a href="#" class="hover:text-slate-400 transition">Privacy</a>
-        <a href="#" class="hover:text-slate-400 transition">Terms</a>
-        <span class="hidden sm:inline text-slate-700">•</span>
-        <span class="text-slate-500">Designed for operators. Built for resilience.</span>
+        <a href="#" class="hover:text-slate-700 transition">Privacy</a>
+        <a href="#" class="hover:text-slate-700 transition">Terms</a>
+        <span class="hidden sm:inline text-slate-300">•</span>
+        <span>Designed for operators. Built for resilience.</span>
       </div>
     </div>
   </div>
@@ -1144,41 +914,140 @@ tailwind.config = {
 
 <!-- Toast -->
 <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 hidden">
-  <div class="glass-strong rounded-full px-5 py-3 flex items-center gap-3 shadow-card border-cyber-green/20">
-    <span class="h-8 w-8 rounded-full bg-cyber-green text-black flex items-center justify-center">✓</span>
+  <div class="bg-slate-900 text-white rounded-full px-5 py-3 flex items-center gap-3 shadow-card border border-slate-800">
+    <span class="h-8 w-8 rounded-full bg-white text-slate-900 flex items-center justify-center font-bold">✓</span>
     <div>
-      <div class="text-sm font-bold text-white">Inquiry received</div>
-      <div class="text-xs text-slate-400">We’ll respond within one business day — check your inbox.</div>
+      <div class="text-sm font-semibold">Inquiry received</div>
+      <div class="text-xs text-slate-300">We’ll respond within one business day — check your inbox.</div>
     </div>
   </div>
 </div>
 
 <script>
-  // Mobile menu
   const btn = document.getElementById('mobileMenuBtn');
   const menu = document.getElementById('mobileMenu');
   btn?.addEventListener('click', () => menu.classList.toggle('hidden'));
-
-  // Smooth scroll offset for sticky nav
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const id = a.getAttribute('href');
-      if (id.length > 1) {
+      if (id.length > 1 && document.querySelector(id)) {
         e.preventDefault();
         const el = document.querySelector(id);
-        if (el) {
-          const top = el.getBoundingClientRect().top + window.scrollY - 72;
-          window.scrollTo({ top, behavior: 'smooth' });
-          menu?.classList.add('hidden');
-        }
+        const top = el.getBoundingClientRect().top + window.scrollY - 68;
+        window.scrollTo({ top, behavior: 'smooth' });
+        menu?.classList.add('hidden');
       }
     });
   });
 
-  // Form handling — WIRED TO BACKEND POST /api/contact with graceful fallback
+  // Scroll progress + nav shadow
+  const scrollProg = document.getElementById('scrollProgress');
+  const topNav = document.getElementById('topNav');
+  const cursorGlow = document.getElementById('cursorGlow');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+    if (scrollProg) scrollProg.style.width = scrolled + '%';
+    if (topNav) {
+      if (window.scrollY > 12) topNav.classList.add('shadow-soft');
+      else topNav.classList.remove('shadow-soft');
+    }
+  }, {passive:true});
+  window.addEventListener('mousemove', (e) => {
+    if (!cursorGlow || window.innerWidth < 1024) return;
+    cursorGlow.style.left = e.clientX + 'px';
+    cursorGlow.style.top = e.clientY + 'px';
+    cursorGlow.style.opacity = '0.9';
+  });
+  document.querySelectorAll('.spotlight').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', ((e.clientX - r.left)/r.width*100)+'%');
+      card.style.setProperty('--my', ((e.clientY - r.top)/r.height*100)+'%');
+    });
+  });
+
+  // Particles — subtle, professional (slate + faint emerald)
+  (() => {
+    const canvas = document.getElementById('heroParticles');
+    if (!canvas) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const ctx = canvas.getContext('2d');
+    let mouse = {x:-9999,y:-9999};
+    const isMobile = window.innerWidth < 768;
+    const COUNT = isMobile ? 36 : 64;
+    const MAX_DIST = isMobile ? 110 : 140;
+    const MOUSE_R = 160;
+    let particles=[];
+    function logical(){ return {lw: canvas.parentElement.clientWidth, lh: canvas.parentElement.clientHeight}; }
+    function init(){
+      const {lw,lh}=logical();
+      particles=[];
+      for(let i=0;i<COUNT;i++) particles.push({x:Math.random()*lw,y:Math.random()*lh,vx:(Math.random()-0.5)*0.32,vy:(Math.random()-0.5)*0.32,r: Math.random()*1.2+0.5,p:Math.random()*Math.PI*2});
+    }
+    function step(){
+      const {lw,lh}=logical();
+      // handle DPR
+      const dpr = window.devicePixelRatio || 1;
+      if (canvas.width !== lw*dpr || canvas.height !== lh*dpr){
+        canvas.width = lw*dpr; canvas.height = lh*dpr;
+        canvas.style.width = lw+'px'; canvas.style.height = lh+'px';
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+      }
+      ctx.clearRect(0,0,lw,lh);
+      particles.forEach(p=>{
+        p.x+=p.vx; p.y+=p.vy; p.p+=0.012;
+        if(p.x<0||p.x>lw) p.vx*=-1;
+        if(p.y<0||p.y>lh) p.vy*=-1;
+        const dx=p.x-mouse.x, dy=p.y-mouse.y, d=Math.hypot(dx,dy);
+        if(d<MOUSE_R){ const f=(MOUSE_R-d)/MOUSE_R; p.x+=(dx/d)*f*0.9; p.y+=(dy/d)*f*0.9; }
+      });
+      // connections — very subtle slate
+      for(let i=0;i<particles.length;i++){
+        for(let j=i+1;j<particles.length;j++){
+          const a=particles[i], b=particles[j];
+          const d=Math.hypot(a.x-b.x,a.y-b.y);
+          if(d<MAX_DIST){
+            const aAlpha=(1-d/MAX_DIST)*0.08;
+            ctx.beginPath();
+            ctx.strokeStyle=`rgba(148,163,184,${aAlpha})`;
+            ctx.lineWidth=0.6;
+            ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+          }
+        }
+        const d2=Math.hypot(particles[i].x-mouse.x,particles[i].y-mouse.y);
+        if(d2<MOUSE_R*0.85){
+          const aAlpha=(1-d2/MOUSE_R)*0.10;
+          ctx.beginPath();
+          ctx.strokeStyle=`rgba(16,185,129,${aAlpha})`;
+          ctx.lineWidth=0.7;
+          ctx.moveTo(particles[i].x,particles[i].y); ctx.lineTo(mouse.x,mouse.y); ctx.stroke();
+        }
+      }
+      particles.forEach(p=>{
+        const glow=0.5+Math.sin(p.p)*0.2;
+        ctx.beginPath();
+        ctx.fillStyle=`rgba(255,255,255,${0.75})`;
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
+        if(p.r>1){
+          ctx.beginPath();
+          ctx.fillStyle=`rgba(148,163,184,${glow*0.35})`;
+          ctx.arc(p.x,p.y,p.r*2.2,0,Math.PI*2); ctx.fill();
+        }
+      });
+      requestAnimationFrame(step);
+    }
+    canvas.parentElement.addEventListener('mousemove', e=>{ const r=canvas.getBoundingClientRect(); mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top; });
+    canvas.parentElement.addEventListener('mouseleave', ()=>{ mouse.x=-9999; mouse.y=-9999; });
+    canvas.parentElement.addEventListener('touchmove', e=>{ if(e.touches[0]){ const r=canvas.getBoundingClientRect(); mouse.x=e.touches[0].clientX-r.left; mouse.y=e.touches[0].clientY-r.top; }}, {passive:true});
+    init(); window.addEventListener('resize', init);
+    requestAnimationFrame(step);
+  })();
+
+  // Form handling — SMART ROUTING (localhost → local API, else FormSubmit)
   const form = document.getElementById('leadForm');
   const toast = document.getElementById('toast');
-  const toastTitle = toast.querySelector('.text-sm.font-bold');
+  const toastTitle = toast.querySelector('.text-sm.font-semibold');
   const toastMsg = toast.querySelector('.text-xs');
   const charCount = document.getElementById('charCount');
   const messageEl = document.getElementById('message');
@@ -1187,459 +1056,107 @@ tailwind.config = {
   const submitLabel = document.getElementById('submitLabel');
   const submitArrow = document.getElementById('submitArrow');
   const submitSpinner = document.getElementById('submitSpinner');
-
   function showToast(title, msg, ok=true){
-    toastTitle.textContent = title;
-    toastMsg.textContent = msg;
-    toast.querySelector('span').className = ok ? 'h-8 w-8 rounded-full bg-cyber-green text-black flex items-center justify-center' : 'h-8 w-8 rounded-full bg-red-500 text-white flex items-center justify-center';
-    toast.querySelector('span').textContent = ok ? '✓' : '!';
-    toast.classList.remove('hidden');
-    setTimeout(() => toast.classList.add('hidden'), 5200);
+    toastTitle.textContent=title; toastMsg.textContent=msg;
+    const badge = toast.querySelector('span');
+    badge.textContent = ok ? '✓' : '!';
+    badge.className = ok ? 'h-8 w-8 rounded-full bg-white text-slate-900 flex items-center justify-center font-bold' : 'h-8 w-8 rounded-full bg-red-500 text-white flex items-center justify-center font-bold';
+    toast.classList.remove('hidden'); setTimeout(()=>toast.classList.add('hidden'),5200);
   }
   function showFormStatus(msg, ok){
-    formStatus.textContent = msg;
-    formStatus.className = ok ? 'rounded-xl px-4 py-3 text-sm bg-cyber-green/10 border border-cyber-green/20 text-cyber-green' : 'rounded-xl px-4 py-3 text-sm bg-red-500/10 border border-red-500/20 text-red-300';
+    formStatus.textContent=msg;
+    formStatus.className = ok ? 'rounded-xl px-4 py-3 text-sm bg-emerald-50 border border-emerald-200 text-emerald-800' : 'rounded-xl px-4 py-3 text-sm bg-red-50 border border-red-200 text-red-700';
     formStatus.classList.remove('hidden');
   }
-  messageEl?.addEventListener('input', () => {
-    const len = messageEl.value.length;
-    charCount.textContent = `${len} / 600`;
-    charCount.classList.toggle('text-red-400', len > 600);
-    charCount.classList.toggle('text-amber-400', len > 0 && len < 10);
+  messageEl?.addEventListener('input', ()=>{
+    const len=messageEl.value.length;
+    charCount.textContent=len+' / 600';
+    charCount.classList.toggle('text-red-500', len>600);
+    charCount.classList.toggle('text-amber-600', len>0 && len<10);
   });
-  form?.addEventListener('submit', async (e) => {
+  form?.addEventListener('submit', async (e)=>{
     e.preventDefault();
     formStatus.classList.add('hidden');
-    const fd = new FormData(form);
-    // honeypot
-    if (fd.get('website')) { showToast('Filtered', 'Bot detected — ignored.', false); return; }
-    const payload = {
-      name: (fd.get('name')||'').toString().trim(),
-      company: (fd.get('company')||'').toString().trim(),
-      email: (fd.get('email')||'').toString().trim(),
-      interest: (fd.get('interest')||'').toString().trim(),
-      message: (fd.get('message')||'').toString().trim(),
-      source: 'ctrlaltdet.com — ' + (fd.get('interest')||'')
+    const fd=new FormData(form);
+    if(fd.get('website')){ showToast('Filtered','Bot detected — ignored.',false); return; }
+    const payload={
+      name:(fd.get('name')||'').toString().trim(),
+      company:(fd.get('company')||'').toString().trim(),
+      email:(fd.get('email')||'').toString().trim(),
+      interest:(fd.get('interest')||'').toString().trim(),
+      message:(fd.get('message')||'').toString().trim(),
+      source:'ctrlaltdet.com — '+(fd.get('interest')||'')
     };
-    // client validation
-    const errs = [];
-    if (payload.name.length < 2) errs.push('Full name');
-    if (payload.company.length < 2) errs.push('Company');
-    if (!payload.email.includes('@')) errs.push('Work email');
-    if (!payload.interest) errs.push('Interest');
-    if (payload.message.length < 10) errs.push('Project context (10+ chars)');
-    if (errs.length){
-      showFormStatus('Please complete: ' + errs.join(', '), false);
-      return;
-    }
-    // UI loading
-    submitBtn.disabled = true;
-    submitLabel.textContent = 'Sending…';
-    submitArrow.classList.add('hidden');
-    submitSpinner.classList.remove('hidden');
-    try {
-      // SMART ROUTING: localhost → try local API first (your server.py), otherwise → FormSubmit (free email to austinjune72@gmail.com)
-      let res;
-      let data;
-      const isLocal = ['localhost','127.0.0.1','0.0.0.0'].includes(window.location.hostname);
-      const tryLocalFirst = isLocal;
+    const errs=[];
+    if(payload.name.length<2) errs.push('Full name');
+    if(payload.company.length<2) errs.push('Company');
+    if(!payload.email.includes('@')) errs.push('Work email');
+    if(!payload.interest) errs.push('Interest');
+    if(payload.message.length<10) errs.push('Project context (10+ chars)');
+    if(errs.length){ showFormStatus('Please complete: '+errs.join(', '), false); return; }
+    submitBtn.disabled=true; submitLabel.textContent='Sending…'; submitArrow.classList.add('hidden'); submitSpinner.classList.remove('hidden');
+    try{
+      let res, data;
+      const isLocal=['localhost','127.0.0.1','0.0.0.0'].includes(window.location.hostname);
       async function postToFormSubmit(){
-        const r = await fetch('https://formsubmit.co/ajax/austinjune72@gmail.com', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({
-            name: payload.name,
-            company: payload.company,
-            email: payload.email,
-            interest: payload.interest,
-            message: payload.message,
-            _subject: `CTRLALTDET Lead: ${payload.interest} — ${payload.company}`,
-            _captcha: 'false',
-            _template: 'table',
-            source: payload.source
-          })
-        });
-        const d = await r.json().catch(()=> ({}));
-        if (r.ok && (d.success === 'true' || d.success === true || r.status === 200)) {
-          d.ok = true;
-          d.message = "Inquiry sent — check austinjune72@gmail.com (and spam folder first time). We'll respond within one business day.";
-          return {r,d};
-        }
-        throw new Error(d.message || 'FormSubmit error');
+        const r=await fetch('https://formsubmit.co/ajax/austinjune72@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name:payload.name,company:payload.company,email:payload.email,interest:payload.interest,message:payload.message,_subject:`CTRLALTDET Lead: ${payload.interest} — ${payload.company}`,_captcha:'false',_template:'table',source:payload.source})});
+        const d=await r.json().catch(()=>({}));
+        if(r.ok && (d.success==='true'||d.success===true||r.status===200)){ d.ok=true; d.message="Inquiry sent — check austinjune72@gmail.com (and spam folder first time). We'll respond within one business day."; return {r,d}; }
+        throw new Error(d.message||'FormSubmit error');
       }
       async function postToLocal(){
-        const r = await fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-        const d = await r.json().catch(()=> ({}));
-        return {r,d};
+        const r=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)});
+        const d=await r.json().catch(()=>({})); return {r,d};
       }
-      try {
-        if (tryLocalFirst) {
-          try {
-            ({r: res, d: data} = await postToLocal());
-            if (res.ok && data.ok) {
-              // local succeeded
-            } else {
-              throw new Error('local failed');
-            }
-          } catch(e){
-            console.warn('Local API failed, trying FormSubmit:', e);
-            ({r: res, d: data} = await postToFormSubmit());
-          }
-        } else {
-          ({r: res, d: data} = await postToFormSubmit());
-        }
-      } catch (fsErr) {
-        console.warn('Primary failed, trying fallback:', fsErr);
-        try {
-          if (tryLocalFirst) {
-            ({r: res, d: data} = await postToFormSubmit());
-          } else {
-            ({r: res, d: data} = await postToLocal());
-          }
-        } catch(e2){
-          throw fsErr;
-        }
+      try{
+        if(isLocal){ try{ ({r:res,d:data}=await postToLocal()); if(!(res.ok&&data.ok)) throw new Error('local failed'); } catch(e){ console.warn('Local failed, trying FormSubmit',e); ({r:res,d:data}=await postToFormSubmit()); } }
+        else { ({r:res,d:data}=await postToFormSubmit()); }
+      } catch(fsErr){
+        console.warn('Primary failed, fallback',fsErr);
+        try{ if(isLocal) ({r:res,d:data}=await postToFormSubmit()); else ({r:res,d:data}=await postToLocal()); } catch(e2){ throw fsErr; }
       }
-      if (res.ok && data.ok){
-        showFormStatus('✓ ' + (data.message || 'Inquiry received — we'll respond within one business day.'), true);
-        showToast('Inquiry received', data.message || 'We\'ll respond within one business day — check your inbox.', true);
-        form.reset();
-        charCount.textContent = '0 / 600';
-        submitLabel.textContent = '✓ Inquiry Sent — We\'ll Be In Touch';
-        submitBtn.classList.add('bg-white','text-black');
-        setTimeout(()=> { submitLabel.textContent = 'Audit Your Infrastructure'; submitBtn.classList.remove('bg-white','text-black'); }, 3200);
-      } else if (data.errors){
-        const msg = Object.values(data.errors).join(' • ');
-        showFormStatus(msg, false);
-        showToast('Check your entries', msg, false);
-      } else {
-        throw new Error(data.error || data.message || 'Server error');
-      }
-    } catch (err){
-      // Graceful fallback: still show success locally and log to console (for static hosts without backend)
-      console.warn('Backend POST failed, using fallback:', err);
-      showFormStatus('✓ Received locally (preview mode) — on production this posts to POST /api/contact and saves to leads.json.', true);
-      showToast('Inquiry received (preview)', 'Backend not reachable in static preview — on your live server it saves to leads.json. We\'ve logged it locally.', true);
-      // still reset
-      form.reset();
-      charCount.textContent = '0 / 600';
-    } finally {
-      submitBtn.disabled = false;
-      submitArrow.classList.remove('hidden');
-      submitSpinner.classList.add('hidden');
-      if (submitLabel.textContent === 'Sending…') submitLabel.textContent = 'Audit Your Infrastructure';
+      if(res.ok&&data.ok){
+        showFormStatus('✓ '+(data.message||'Inquiry received — we\'ll respond within one business day.'), true);
+        showToast('Inquiry received', data.message||'We\'ll respond within one business day — check your inbox.', true);
+        form.reset(); charCount.textContent='0 / 600';
+        submitLabel.textContent='✓ Inquiry Sent — We\'ll Be In Touch'; submitBtn.classList.add('bg-emerald-600'); setTimeout(()=>{ submitLabel.textContent='Audit your infrastructure'; submitBtn.classList.remove('bg-emerald-600'); },3200);
+      } else if(data.errors){ const msg=Object.values(data.errors).join(' • '); showFormStatus(msg,false); showToast('Check your entries',msg,false); }
+      else throw new Error(data.error||data.message||'Server error');
+    } catch(err){
+      console.warn('Backend POST failed, fallback',err);
+      showFormStatus('✓ Received locally (preview mode) — on production this posts to FormSubmit and saves to leads.json.', true);
+      showToast('Inquiry received (preview)','Backend not reachable in static preview — on live server it saves to leads.json.', true);
+      form.reset(); charCount.textContent='0 / 600';
+    } finally{
+      submitBtn.disabled=false; submitArrow.classList.remove('hidden'); submitSpinner.classList.add('hidden');
+      if(submitLabel.textContent==='Sending…') submitLabel.textContent='Audit your infrastructure';
     }
   });
 
-  // Calendly helpers
-  window.openCalendly = function(){
-    if (window.Calendly && Calendly.initPopupWidget) {
-      Calendly.initPopupWidget({url: 'https://calendly.com/ctrlaltdet/30min?hide_gdpr_banner=1&background_color=0b1016&text_color=e2e8f0&primary_color=00ff88'});
-    } else {
-      document.getElementById('booking')?.scrollIntoView({behavior:'smooth'});
-    }
+  window.openCalendly=function(){
+    if(window.Calendly && Calendly.initPopupWidget){ Calendly.initPopupWidget({url:'https://calendly.com/ctrlaltdet/30min?hide_gdpr_banner=1&background_color=f8fafc&text_color=0f172a&primary_color=10b981'}); }
+    else document.getElementById('booking')?.scrollIntoView({behavior:'smooth'});
     return false;
   };
-  // Keyboard shortcut "/" to jump to booking
-  document.addEventListener('keydown', (ev)=>{
-    if (ev.key === '/' && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)){
-      ev.preventDefault();
-      document.getElementById('booking')?.scrollIntoView({behavior:'smooth'});
-    }
-  });
+  document.addEventListener('keydown', ev=>{ if(ev.key==='/' && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)){ ev.preventDefault(); document.getElementById('booking')?.scrollIntoView({behavior:'smooth'}); } });
 
-  // Podcast player mock
-  const playPause = document.getElementById('playPause');
-  const playIcon = document.getElementById('playIcon');
-  const pauseIcon = document.getElementById('pauseIcon');
-  let playing = false;
-  let interval;
-  let progress = 34;
-  const progressBar = document.getElementById('progressBar');
-  const currentTimeEl = document.getElementById('currentTime');
-  function formatTime(p){
-    // 38:12 total, simulate
-    const totalSec = 38*60+12;
-    const cur = Math.floor(totalSec * p/100);
-    const m = Math.floor(cur/60).toString().padStart(2,'0');
-    const s = (cur%60).toString().padStart(2,'0');
-    return `${m}:${s}`;
-  }
-  playPause?.addEventListener('click', () => {
-    playing = !playing;
-    playIcon.classList.toggle('hidden', playing);
-    pauseIcon.classList.toggle('hidden', !playing);
-    if (playing) {
-      interval = setInterval(() => {
-        progress = Math.min(100, progress + 0.08);
-        progressBar.style.width = progress + '%';
-        currentTimeEl.textContent = formatTime(progress);
-        if (progress >= 100) {
-          playing = false;
-          playIcon.classList.remove('hidden');
-          pauseIcon.classList.add('hidden');
-          clearInterval(interval);
-        }
-      }, 120);
-    } else {
-      clearInterval(interval);
-    }
+  const playPause=document.getElementById('playPause');
+  const playIcon=document.getElementById('playIcon');
+  const pauseIcon=document.getElementById('pauseIcon');
+  let playing=false, interval, progress=34;
+  const progressBar=document.getElementById('progressBar');
+  const currentTimeEl=document.getElementById('currentTime');
+  function formatTime(p){ const total=38*60+12; const cur=Math.floor(total*p/100); const m=Math.floor(cur/60).toString().padStart(2,'0'); const s=(cur%60).toString().padStart(2,'0'); return `${m}:${s}`; }
+  playPause?.addEventListener('click', ()=>{
+    playing=!playing; playIcon.classList.toggle('hidden', playing); pauseIcon.classList.toggle('hidden', !playing);
+    if(playing){ interval=setInterval(()=>{ progress=Math.min(100,progress+0.08); progressBar.style.width=progress+'%'; currentTimeEl.textContent=formatTime(progress); if(progress>=100){ playing=false; playIcon.classList.remove('hidden'); pauseIcon.classList.add('hidden'); clearInterval(interval);} },120); } else clearInterval(interval);
   });
-  // listenBtn now points to YouTube (https://www.youtube.com/@CtrlAltDet) — allow external nav, only mock-play if it's still an internal anchor
-  document.getElementById('listenBtn')?.addEventListener('click', (e) => {
-    const href = e.currentTarget.getAttribute('href') || '';
-    if (href.startsWith('http')) return; // let YouTube link navigate
-    e.preventDefault();
-    document.querySelector('#podcast').scrollIntoView({ behavior: 'smooth' });
-    setTimeout(()=> playPause?.click(), 600);
-  });
+  document.getElementById('listenBtn')?.addEventListener('click', e=>{ const href=e.currentTarget.getAttribute('href')||''; if(href.startsWith('http')) return; e.preventDefault(); document.querySelector('#podcast')?.scrollIntoView({behavior:'smooth'}); setTimeout(()=>playPause?.click(),600); });
 
-  // Subtle entrance animation on scroll
-  const observer = new IntersectionObserver((entries)=>{
-    entries.forEach(ent=>{
-      if(ent.isIntersecting){
-        ent.target.classList.add('opacity-100','translate-y-0');
-        ent.target.classList.remove('opacity-0','translate-y-4');
-      }
-    });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('article, .glass-strong').forEach(el=>{
-    el.classList.add('transition','duration-700','opacity-0','translate-y-4');
-    observer.observe(el);
-  });
-  // Immediately show first fold
-  setTimeout(()=>{
-    document.querySelectorAll('article').forEach((el,i)=> {
-      if(i<2) { el.classList.remove('opacity-0','translate-y-4'); el.classList.add('opacity-100','translate-y-0'); }
-    });
-  }, 300);
+  const observer=new IntersectionObserver(entries=>{ entries.forEach(ent=>{ if(ent.isIntersecting){ ent.target.classList.add('opacity-100','translate-y-0'); ent.target.classList.remove('opacity-0','translate-y-3'); } }); }, {threshold:0.08});
+  document.querySelectorAll('.card-hover, .spotlight').forEach(el=>{ el.classList.add('transition','duration-500','opacity-0','translate-y-3'); observer.observe(el); });
+  setTimeout(()=>{ document.querySelectorAll('.card-hover').forEach((el,i)=>{ if(i<2){ el.classList.remove('opacity-0','translate-y-3'); el.classList.add('opacity-100','translate-y-0'); } }); }, 200);
 </script>
-  <script>
-  // --- Scroll Progress ---
-  const scrollProg = document.getElementById('scrollProgress');
-  window.addEventListener('scroll', () => {
-    const h = document.documentElement;
-    const scrolled = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
-    if (scrollProg) scrollProg.style.width = scrolled + '%';
-  }, {passive:true});
-
-  // --- Cursor Glow (desktop) ---
-  const glow = document.getElementById('cursorGlow');
-  let glowVisible = false;
-  window.addEventListener('mousemove', (e) => {
-    if (!glow) return;
-    glow.style.left = e.clientX + 'px';
-    glow.style.top = e.clientY + 'px';
-    if (!glowVisible) {
-      glow.style.opacity = '0.18';
-      glowVisible = true;
-    }
-  }, {passive:true});
-  window.addEventListener('mouseleave', () => { if(glow) glow.style.opacity='0'; glowVisible=false; });
-
-  // --- Spotlight cards ---
-  document.querySelectorAll('.spotlight-card').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const r = card.getBoundingClientRect();
-      const x = ((e.clientX - r.left) / r.width) * 100;
-      const y = ((e.clientY - r.top) / r.height) * 100;
-      card.style.setProperty('--mx', x + '%');
-      card.style.setProperty('--my', y + '%');
-    });
-  });
-
-  // --- Magnetic buttons ---
-  document.querySelectorAll('.magnetic').forEach(btn => {
-    btn.addEventListener('mousemove', (e) => {
-      const r = btn.getBoundingClientRect();
-      const x = e.clientX - r.left - r.width/2;
-      const y = e.clientY - r.top - r.height/2;
-      btn.style.transform = `translate(${x*0.12}px, ${y*0.35}px)`;
-    });
-    btn.addEventListener('mouseleave', () => btn.style.transform = 'translate(0,0)');
-  });
-
-  // --- Particle Network (Hero) ---
-  (() => {
-    const canvas = document.getElementById('heroParticles');
-    if (!canvas) return;
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) return;
-    const ctx = canvas.getContext('2d');
-    let w, h, particles = [], mouse = {x: -9999, y: -9999};
-    const isMobile = window.innerWidth < 768;
-    const COUNT = isMobile ? 42 : 88;
-    const MAX_DIST = isMobile ? 110 : 145;
-    const MOUSE_RADIUS = 170;
-
-    function resize(){
-      const hero = canvas.parentElement;
-      w = canvas.width = hero.clientWidth * window.devicePixelRatio;
-      h = canvas.height = hero.clientHeight * window.devicePixelRatio;
-      canvas.style.width = hero.clientWidth + 'px';
-      canvas.style.height = hero.clientHeight + 'px';
-      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-      // need to reset after scale? we scale once, so use logical size for particles
-      // Re-create particles with logical coords
-    }
-    // Use logical size for physics
-    function getLogical(){ return {lw: canvas.parentElement.clientWidth, lh: canvas.parentElement.clientHeight}; }
-
-    function init(){
-      particles = [];
-      const {lw, lh} = getLogical();
-      for(let i=0;i<COUNT;i++){
-        particles.push({
-          x: Math.random()*lw,
-          y: Math.random()*lh,
-          vx: (Math.random()-0.5)*0.45,
-          vy: (Math.random()-0.5)*0.45,
-          r: Math.random()*1.4 + 0.6,
-          pulse: Math.random()*Math.PI*2
-        });
-      }
-    }
-    function step(t){
-      const {lw, lh} = getLogical();
-      ctx.clearRect(0,0,lw,lh);
-      // update
-      particles.forEach(p=>{
-        p.x += p.vx;
-        p.y += p.vy;
-        p.pulse += 0.015;
-        // bounce
-        if(p.x<0||p.x>lw) p.vx*=-1;
-        if(p.y<0||p.y>lh) p.vy*=-1;
-        // mouse interaction - gentle repulsion
-        const dx = p.x - mouse.x;
-        const dy = p.y - mouse.y;
-        const d = Math.hypot(dx,dy);
-        if(d < MOUSE_RADIUS){
-          const f = (MOUSE_RADIUS - d)/MOUSE_RADIUS;
-          p.x += (dx/d)*f*1.1;
-          p.y += (dy/d)*f*1.1;
-        }
-      });
-      // draw connections
-      for(let i=0;i<particles.length;i++){
-        for(let j=i+1;j<particles.length;j++){
-          const a=particles[i], b=particles[j];
-          const dx=a.x-b.x, dy=a.y-b.y;
-          const dist=Math.hypot(dx,dy);
-          if(dist<MAX_DIST){
-            const alpha = (1 - dist/MAX_DIST)*0.18;
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(0,255,136,${alpha})`;
-            ctx.lineWidth=0.7;
-            ctx.moveTo(a.x,a.y);
-            ctx.lineTo(b.x,b.y);
-            ctx.stroke();
-          }
-        }
-        // mouse line
-        const dxm = particles[i].x - mouse.x;
-        const dym = particles[i].y - mouse.y;
-        const dm = Math.hypot(dxm,dym);
-        if(dm < MOUSE_RADIUS*0.9){
-          const alpha = (1 - dm/MOUSE_RADIUS)*0.22;
-          ctx.beginPath();
-          ctx.strokeStyle = `rgba(0,255,136,${alpha})`;
-          ctx.lineWidth=0.9;
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(mouse.x, mouse.y);
-          ctx.stroke();
-        }
-      }
-      // draw particles
-      particles.forEach(p=>{
-        const glowAlpha = 0.55 + Math.sin(p.pulse)*0.25;
-        // outer glow
-        ctx.beginPath();
-        ctx.fillStyle = `rgba(0,255,136,${glowAlpha*0.18})`;
-        ctx.arc(p.x,p.y,p.r*3.2,0,Math.PI*2);
-        ctx.fill();
-        // core
-        ctx.beginPath();
-        ctx.fillStyle = `rgba(255,255,255,${0.85})`;
-        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fill();
-        // inner green core occasionally
-        if(p.r>1.1){
-          ctx.beginPath();
-          ctx.fillStyle = `rgba(0,255,136,${glowAlpha})`;
-          ctx.arc(p.x,p.y,p.r*0.55,0,Math.PI*2);
-          ctx.fill();
-        }
-      });
-      requestAnimationFrame(step);
-    }
-    function onMouseMove(e){
-      const rect = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
-    }
-    function onMouseLeave(){ mouse.x=-9999; mouse.y=-9999; }
-    // init
-    init();
-    // need to handle resize: re-init to keep density
-    window.addEventListener('resize', init);
-    canvas.parentElement.addEventListener('mousemove', onMouseMove);
-    canvas.parentElement.addEventListener('mouseleave', onMouseLeave);
-    // touch
-    canvas.parentElement.addEventListener('touchmove', (e)=>{
-      if(e.touches[0]){
-        const rect=canvas.getBoundingClientRect();
-        mouse.x=e.touches[0].clientX-rect.left;
-        mouse.y=e.touches[0].clientY-rect.top;
-      }
-    }, {passive:true});
-    requestAnimationFrame(step);
-  })();
-
-  // --- Animated counters (hero metrics) ---
-  (() => {
-    const els = document.querySelectorAll('.text-xl.font-bold');
-    const obs = new IntersectionObserver(entries=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting && !e.target.dataset.counted){
-          e.target.dataset.counted='1';
-          const raw = e.target.textContent.trim();
-          const numMatch = raw.match(/[\d,.]+/);
-          if(!numMatch) return;
-          const target = parseFloat(numMatch[0].replace(/,/g,''));
-          if(isNaN(target)) return;
-          let cur=0;
-          const steps=42;
-          const inc=target/steps;
-          const isFloat = raw.includes('.');
-          const hasComma = raw.includes(',');
-          const suffix = raw.replace(numMatch[0],'');
-          let i=0;
-          const id=setInterval(()=>{
-            i++; cur+=inc;
-            if(i>=steps){ cur=target; clearInterval(id); }
-            let out = isFloat ? cur.toFixed(1) : Math.round(cur).toLocaleString();
-            if(hasComma && !isFloat) out = Math.round(cur).toLocaleString();
-            e.target.textContent = out + suffix;
-          }, 28);
-        }
-      });
-    }, {threshold:0.6});
-    els.forEach(el=>obs.observe(el));
-  })();
-
-  // --- Header shadow on scroll (more robust) ---
-  const nav = document.querySelector('nav');
-  window.addEventListener('scroll', ()=>{
-    if(!nav) return;
-    if(window.scrollY>16){ nav.classList.add('shadow-[0_8px_32px_rgba(0,0,0,0.45)]','bg-[#040507]/90'); }
-    else { nav.classList.remove('shadow-[0_8px_32px_rgba(0,0,0,0.45)]','bg-[#040507]/90'); }
-  }, {passive:true});
-</script>
-  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
