@@ -85,9 +85,46 @@ tailwind.config = {
     pointer-events:none;
     opacity:0.5;
   }
+  /* Pro motion */
+  @keyframes float { 0%,100% { transform: translateY(0px) } 50% { transform: translateY(-8px) } }
+  @keyframes beam { 0% { transform: translateX(-100%) } 100% { transform: translateX(200%) } }
+  @keyframes shimmer { 0% { background-position: -200% 0 } 100% { background-position: 200% 0 } }
+  .float-slow { animation: float 6s ease-in-out infinite; }
+  .spotlight-card { position: relative; overflow: hidden; }
+  .spotlight-card::before {
+    content:"";
+    position: absolute;
+    inset: -1px;
+    background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%), rgba(0,255,136,0.12), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .spotlight-card:hover::before { opacity: 1; }
+  .spotlight-card > * { position: relative; z-index: 2; }
+  #heroParticles { filter: contrast(1.1) brightness(1.05); }
+  .glass-strong:hover { border-color: rgba(0,255,136,0.18); box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,255,136,0.08); }
+  .beam::after {
+    content:"";
+    position:absolute;
+    top:0; left:0; height:1px; width:50%;
+    background: linear-gradient(90deg, transparent, rgba(0,255,136,0.8), transparent);
+    animation: beam 3.5s linear infinite;
+    opacity:0.6;
+  }
+  .magnetic { transition: transform 0.2s cubic-bezier(0.2,0,0.2,1); will-change: transform; }
+  @media (prefers-reduced-motion: reduce) {
+    .float-slow, .beam::after { animation: none; }
+    #heroParticles { display:none; }
+  }
 </style>
 </head>
 <body class="bg-cyber-black text-slate-200 font-sans antialiased selection:bg-cyber-green selection:text-cyber-black">
+<!-- Scroll progress -->
+<div id="scrollProgress" class="fixed top-0 left-0 h-[2px] bg-gradient-to-r from-cyber-green via-emerald-400 to-cyber-green z-[70] w-0 transition-[width] duration-100 ease-out pointer-events-none"></div>
+<!-- Cursor glow (desktop only) -->
+<div id="cursorGlow" class="fixed top-0 left-0 w-[700px] h-[700px] pointer-events-none -translate-x-1/2 -translate-y-1/2 rounded-full opacity-0 lg:opacity-0 transition-opacity duration-300 z-0 hidden lg:block" style="background: radial-gradient(circle at center, rgba(0,255,136,0.10), rgba(0,255,136,0.04) 30%, transparent 65%); filter: blur(8px);"></div>
 
 <!-- Top accent line -->
 <div class="h-[2px] w-full bg-gradient-to-r from-transparent via-cyber-green to-transparent opacity-60"></div>
@@ -117,7 +154,7 @@ tailwind.config = {
       </div>
 
       <div class="flex items-center gap-3">
-        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 bg-cyber-green text-black px-5 py-[10px] rounded-full text-[13px] font-bold tracking-tight hover:bg-[#00E67A] hover:shadow-glow transition">
+        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 bg-cyber-green text-black px-5 py-[10px] rounded-full text-[13px] font-bold tracking-tight hover:bg-[#00E67A] hover:shadow-glow transition magnetic">
           Audit Your Infrastructure
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 8H12M12 8L8 4M12 8L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -145,7 +182,8 @@ tailwind.config = {
   <!-- Background layers -->
   <div class="absolute inset-0 bg-[#040507]"></div>
   <div class="absolute inset-0 grid-pattern opacity-40"></div>
-  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#040507]"></div>
+  <canvas id="heroParticles" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#040507] pointer-events-none"></div>
   <div class="absolute -top-32 -right-32 h-[520px] w-[520px] rounded-full bg-cyber-green/10 blur-[100px] pointer-events-none"></div>
   <div class="absolute top-20 -left-32 h-[400px] w-[400px] rounded-full bg-emerald-900/20 blur-[100px] pointer-events-none"></div>
 
@@ -174,7 +212,7 @@ tailwind.config = {
         </p>
 
         <div class="mt-7 flex flex-col sm:flex-row gap-3">
-          <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-cyber-green text-black px-7 py-3.5 rounded-full font-bold text-[14px] hover:bg-[#00E67A] hover:shadow-glow transition shadow-card">
+          <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-cyber-green text-black px-7 py-3.5 rounded-full font-bold text-[14px] hover:bg-[#00E67A] hover:shadow-glow transition shadow-card magnetic">
             Audit Your Infrastructure
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
@@ -218,7 +256,7 @@ tailwind.config = {
         <!-- Glow behind -->
         <div class="absolute inset-0 -z-10 bg-gradient-to-b from-cyber-green/10 to-transparent blur-2xl rounded-3xl"></div>
         
-        <div class="glass-strong rounded-[20px] overflow-hidden shadow-card">
+        <div class="glass-strong rounded-[20px] overflow-hidden shadow-card float-slow spotlight-card beam relative">
           <!-- Window header -->
           <div class="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-white/[0.03]">
             <div class="flex items-center gap-2">
@@ -331,7 +369,7 @@ tailwind.config = {
 
       <!-- Architect Card -->
       <div class="lg:col-span-5">
-        <div class="glass-strong rounded-[20px] overflow-hidden">
+        <div class="glass-strong rounded-[20px] overflow-hidden spotlight-card">
           <div class="p-6 sm:p-7">
             <div class="flex items-start gap-4">
               <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-slate-700 to-slate-900 border border-white/10 flex items-center justify-center text-white font-display font-bold text-lg shrink-0">
@@ -418,7 +456,7 @@ tailwind.config = {
 
     <div class="grid md:grid-cols-2 gap-5 lg:gap-6">
       <!-- RedForge -->
-      <article class="group relative rounded-[20px] overflow-hidden glass-strong hover:border-cyber-green/30 transition">
+      <article class="group relative rounded-[20px] overflow-hidden glass-strong hover:border-cyber-green/30 transition spotlight-card">
         <div class="absolute inset-0 bg-gradient-to-br from-cyber-green/[0.06] to-transparent opacity-0 group-hover:opacity-100 transition"></div>
         <div class="relative p-6 sm:p-7">
           <div class="flex items-start justify-between gap-4">
@@ -450,7 +488,7 @@ tailwind.config = {
       </article>
 
       <!-- ReconFramework v2.0 -->
-      <article class="group relative rounded-[20px] overflow-hidden glass-strong hover:border-white/15 transition">
+      <article class="group relative rounded-[20px] overflow-hidden glass-strong hover:border-white/15 transition spotlight-card">
         <div class="relative p-6 sm:p-7">
           <div class="flex items-start justify-between gap-4">
             <div class="h-11 w-11 rounded-xl bg-white text-black flex items-center justify-center">
@@ -481,7 +519,7 @@ tailwind.config = {
       </article>
 
       <!-- Silvr -->
-      <article class="group relative rounded-[20px] overflow-hidden glass-strong hover:border-white/15 transition">
+      <article class="group relative rounded-[20px] overflow-hidden glass-strong hover:border-white/15 transition spotlight-card">
         <div class="relative p-6 sm:p-7">
           <div class="flex items-start justify-between gap-4">
             <div class="h-11 w-11 rounded-xl bg-gradient-to-br from-sky-400 to-indigo-500 text-white flex items-center justify-center">
@@ -512,7 +550,7 @@ tailwind.config = {
       </article>
 
       <!-- DataNudge Pro -->
-      <article class="group relative rounded-[20px] overflow-hidden glass-strong hover:border-cyber-green/20 transition">
+      <article class="group relative rounded-[20px] overflow-hidden glass-strong hover:border-cyber-green/20 transition spotlight-card">
         <div class="absolute inset-0 bg-gradient-to-br from-violet-500/[0.06] to-transparent opacity-60"></div>
         <div class="relative p-6 sm:p-7">
           <div class="flex items-start justify-between gap-4">
@@ -571,7 +609,7 @@ tailwind.config = {
 
     <div class="grid lg:grid-cols-2 gap-6">
       <!-- Engineering -->
-      <div class="rounded-[20px] overflow-hidden glass-strong">
+      <div class="rounded-[20px] overflow-hidden glass-strong spotlight-card">
         <div class="h-1 w-full bg-gradient-to-r from-cyber-green to-emerald-600"></div>
         <div class="p-6 sm:p-8">
           <div class="flex items-center gap-3 mb-5">
@@ -621,7 +659,7 @@ tailwind.config = {
       </div>
 
       <!-- Security -->
-      <div class="rounded-[20px] overflow-hidden glass-strong">
+      <div class="rounded-[20px] overflow-hidden glass-strong spotlight-card">
         <div class="h-1 w-full bg-gradient-to-r from-slate-600 to-slate-800"></div>
         <div class="p-6 sm:p-8">
           <div class="flex items-center gap-3 mb-5">
@@ -734,12 +772,12 @@ tailwind.config = {
           </div>
 
           <div class="mt-8 flex flex-col sm:flex-row gap-3">
-            <a href="#contact" id="listenBtn" class="inline-flex items-center justify-center gap-2 bg-cyber-green text-black px-6 py-3 rounded-full font-bold text-sm hover:bg-[#00E67A] transition">
+            <a href="https://www.youtube.com/@CtrlAltDet" target="_blank" rel="noopener noreferrer" id="listenBtn" class="inline-flex items-center justify-center gap-2 bg-cyber-green text-black px-6 py-3 rounded-full font-bold text-sm hover:bg-[#00E67A] transition">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14l11-7z"/></svg>
-              Listen to the Latest Episode
+              Watch Latest Episode on YouTube
             </a>
-            <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/15 text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-white/10 transition">
-              Browse Episodes
+            <a href="https://www.youtube.com/@CtrlAltDet" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/15 text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-white/10 transition">
+              Browse All Episodes
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </div>
@@ -747,7 +785,7 @@ tailwind.config = {
           <div class="mt-6 flex items-center gap-4 text-xs font-mono text-slate-500">
             <span class="flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a7 7 0 00-7 7v4a7 7 0 0014 0V9a7 7 0 00-7-7z"/><path d="M19 11a7 7 0 01-7 7"/><path d="M12 18v3"/></svg> New episodes biweekly</span>
             <span>•</span>
-            <span>Available on Spotify, Apple, YouTube</span>
+            <span>Available on <a href="https://www.youtube.com/@CtrlAltDet" target="_blank" rel="noopener noreferrer" class="text-red-400 hover:text-red-300 hover:underline underline-offset-2">YouTube</a>, Spotify, Apple</span>
           </div>
         </div>
 
@@ -812,8 +850,11 @@ tailwind.config = {
                   </button>
                 </div>
                 <div class="mt-4 flex gap-2">
-                  <a href="#contact" class="flex-1 text-center bg-white text-black py-2.5 rounded-full text-xs font-bold hover:bg-slate-100 transition">Subscribe on Spotify</a>
-                  <a href="#contact" class="flex-1 text-center bg-white/5 border border-white/15 text-white py-2.5 rounded-full text-xs font-bold hover:bg-white/10 transition">Apple Podcasts</a>
+                  <a href="https://www.youtube.com/@CtrlAltDet" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-red-600 text-white py-2.5 rounded-full text-xs font-bold hover:bg-red-700 transition flex items-center justify-center gap-1.5">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 6.2c-.3-1-1.1-1.8-2.1-2.1C15.7 3.5 12 3.5 12 3.5s-3.7 0-5.5.6c-1 .3-1.8 1.1-2.1 2.1C4 8 4 12 4 12s0 4 .4 5.8c.3 1 1.1 1.8 2.1 2.1 1.8.6 5.5.6 5.5.6s3.7 0 5.5-.6c1-.3 1.8-1.1 2.1-2.1.4-1.8.4-5.8.4-5.8s0-4-.4-5.8zM10 15.5v-7l6 3.5-6 3.5z"/></svg>
+                    Watch on YouTube
+                  </a>
+                  <a href="https://www.youtube.com/@CtrlAltDet" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-white/5 border border-white/15 text-white py-2.5 rounded-full text-xs font-bold hover:bg-white/10 transition">Visit Channel</a>
                 </div>
               </div>
             </div>
@@ -1013,7 +1054,7 @@ tailwind.config = {
             </button>
 
             <p class="text-center text-[11px] font-mono text-slate-600">
-              Wired to <code class="px-1 py-0.5 rounded bg-cyber-green/10 border border-cyber-green/20 text-cyber-green">FormSubmit → <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b7d6c2c4c3ded9ddc2d9d28085f7d0dad6dedb99d4d8da">[email&#160;protected]</a></code> • Free, no backend needed • Prefer email? <a href="/cdn-cgi/l/email-protection#cea6aba2a2a18eadbabca2afa2baaaabbae0ada1a3" class="text-slate-400 hover:text-cyber-green underline underline-offset-2"><span class="__cf_email__" data-cfemail="fe969b929291be9d8a8c929f928a9a9b8ad09d9193">[email&#160;protected]</span></a> • Lincoln Park, MI
+              Wired to <code class="px-1 py-0.5 rounded bg-cyber-green/10 border border-cyber-green/20 text-cyber-green">FormSubmit → austinjune72@gmail.com</code> • Free, no backend needed • Prefer email? <a href="mailto:hello@ctrlaltdet.com" class="text-slate-400 hover:text-cyber-green underline underline-offset-2">hello@ctrlaltdet.com</a> • Lincoln Park, MI
             </p>
           </form>
         </div>
@@ -1049,8 +1090,8 @@ tailwind.config = {
           <a href="#contact" class="h-8 w-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition" aria-label="Email">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v16H4z"/><path d="M4 8l8 5 8-5"/></svg>
           </a>
-          <a href="#podcast" class="h-8 w-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition" aria-label="Podcast">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a7 7 0 00-7 7v4a7 7 0 0014 0V9a7 7 0 00-7-7z"/><path d="M12 18v3"/><path d="M8 22h8"/></svg>
+          <a href="https://www.youtube.com/@CtrlAltDet" target="_blank" rel="noopener noreferrer" class="h-8 w-8 rounded-full bg-red-600/20 border border-red-600/30 flex items-center justify-center hover:bg-red-600 hover:text-white text-red-400 transition" aria-label="YouTube">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 6.2c-.3-1-1.1-1.8-2.1-2.1C15.7 3.5 12 3.5 12 3.5s-3.7 0-5.5.6c-1 .3-1.8 1.1-2.1 2.1C4 8 4 12 4 12s0 4 .4 5.8c.3 1 1.1 1.8 2.1 2.1 1.8.6 5.5.6 5.5.6s3.7 0 5.5-.6c1-.3 1.8-1.1 2.1-2.1.4-1.8.4-5.8.4-5.8s0-4-.4-5.8zM10 15.5v-7l6 3.5-6 3.5z"/></svg>
           </a>
           <a href="#products" class="h-8 w-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition" aria-label="Products">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -1081,7 +1122,8 @@ tailwind.config = {
           <div class="font-mono text-xs tracking-widest uppercase text-white">Contact</div>
           <ul class="mt-3 space-y-2 text-sm text-slate-500">
             <li>Lincoln Park, MI</li>
-            <li><a href="/cdn-cgi/l/email-protection#1d75787171725d7e696f717c7169797869337e7270" class="hover:text-cyber-green transition"><span class="__cf_email__" data-cfemail="aec6cbc2c2c1eecddadcc2cfc2dacacbda80cdc1c3">[email&#160;protected]</span></a></li>
+            <li><a href="mailto:hello@ctrlaltdet.com" class="hover:text-cyber-green transition">hello@ctrlaltdet.com</a></li>
+            <li><a href="https://www.youtube.com/@CtrlAltDet" target="_blank" rel="noopener noreferrer" class="hover:text-red-400 transition flex items-center gap-1.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 6.2c-.3-1-1.1-1.8-2.1-2.1C15.7 3.5 12 3.5 12 3.5s-3.7 0-5.5.6c-1 .3-1.8 1.1-2.1 2.1C4 8 4 12 4 12s0 4 .4 5.8c.3 1 1.1 1.8 2.1 2.1 1.8.6 5.5.6 5.5.6s3.7 0 5.5-.6c1-.3 1.8-1.1 2.1-2.1.4-1.8.4-5.8.4-5.8s0-4-.4-5.8zM10 15.5v-7l6 3.5-6 3.5z"/></svg> youtube.com/@CtrlAltDet</a></li>
             <li><a href="#contact" class="inline-flex mt-1 bg-cyber-green text-black px-4 py-1.5 rounded-full text-xs font-bold hover:bg-[#00E67A] transition">Audit Your Infrastructure</a></li>
           </ul>
         </div>
@@ -1111,7 +1153,7 @@ tailwind.config = {
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Mobile menu
   const btn = document.getElementById('mobileMenuBtn');
   const menu = document.getElementById('mobileMenu');
@@ -1347,7 +1389,10 @@ tailwind.config = {
       clearInterval(interval);
     }
   });
+  // listenBtn now points to YouTube (https://www.youtube.com/@CtrlAltDet) — allow external nav, only mock-play if it's still an internal anchor
   document.getElementById('listenBtn')?.addEventListener('click', (e) => {
+    const href = e.currentTarget.getAttribute('href') || '';
+    if (href.startsWith('http')) return; // let YouTube link navigate
     e.preventDefault();
     document.querySelector('#podcast').scrollIntoView({ behavior: 'smooth' });
     setTimeout(()=> playPause?.click(), 600);
@@ -1373,6 +1418,228 @@ tailwind.config = {
     });
   }, 300);
 </script>
+  <script>
+  // --- Scroll Progress ---
+  const scrollProg = document.getElementById('scrollProgress');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+    if (scrollProg) scrollProg.style.width = scrolled + '%';
+  }, {passive:true});
+
+  // --- Cursor Glow (desktop) ---
+  const glow = document.getElementById('cursorGlow');
+  let glowVisible = false;
+  window.addEventListener('mousemove', (e) => {
+    if (!glow) return;
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+    if (!glowVisible) {
+      glow.style.opacity = '0.18';
+      glowVisible = true;
+    }
+  }, {passive:true});
+  window.addEventListener('mouseleave', () => { if(glow) glow.style.opacity='0'; glowVisible=false; });
+
+  // --- Spotlight cards ---
+  document.querySelectorAll('.spotlight-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      const x = ((e.clientX - r.left) / r.width) * 100;
+      const y = ((e.clientY - r.top) / r.height) * 100;
+      card.style.setProperty('--mx', x + '%');
+      card.style.setProperty('--my', y + '%');
+    });
+  });
+
+  // --- Magnetic buttons ---
+  document.querySelectorAll('.magnetic').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const r = btn.getBoundingClientRect();
+      const x = e.clientX - r.left - r.width/2;
+      const y = e.clientY - r.top - r.height/2;
+      btn.style.transform = `translate(${x*0.12}px, ${y*0.35}px)`;
+    });
+    btn.addEventListener('mouseleave', () => btn.style.transform = 'translate(0,0)');
+  });
+
+  // --- Particle Network (Hero) ---
+  (() => {
+    const canvas = document.getElementById('heroParticles');
+    if (!canvas) return;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+    const ctx = canvas.getContext('2d');
+    let w, h, particles = [], mouse = {x: -9999, y: -9999};
+    const isMobile = window.innerWidth < 768;
+    const COUNT = isMobile ? 42 : 88;
+    const MAX_DIST = isMobile ? 110 : 145;
+    const MOUSE_RADIUS = 170;
+
+    function resize(){
+      const hero = canvas.parentElement;
+      w = canvas.width = hero.clientWidth * window.devicePixelRatio;
+      h = canvas.height = hero.clientHeight * window.devicePixelRatio;
+      canvas.style.width = hero.clientWidth + 'px';
+      canvas.style.height = hero.clientHeight + 'px';
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      // need to reset after scale? we scale once, so use logical size for particles
+      // Re-create particles with logical coords
+    }
+    // Use logical size for physics
+    function getLogical(){ return {lw: canvas.parentElement.clientWidth, lh: canvas.parentElement.clientHeight}; }
+
+    function init(){
+      particles = [];
+      const {lw, lh} = getLogical();
+      for(let i=0;i<COUNT;i++){
+        particles.push({
+          x: Math.random()*lw,
+          y: Math.random()*lh,
+          vx: (Math.random()-0.5)*0.45,
+          vy: (Math.random()-0.5)*0.45,
+          r: Math.random()*1.4 + 0.6,
+          pulse: Math.random()*Math.PI*2
+        });
+      }
+    }
+    function step(t){
+      const {lw, lh} = getLogical();
+      ctx.clearRect(0,0,lw,lh);
+      // update
+      particles.forEach(p=>{
+        p.x += p.vx;
+        p.y += p.vy;
+        p.pulse += 0.015;
+        // bounce
+        if(p.x<0||p.x>lw) p.vx*=-1;
+        if(p.y<0||p.y>lh) p.vy*=-1;
+        // mouse interaction - gentle repulsion
+        const dx = p.x - mouse.x;
+        const dy = p.y - mouse.y;
+        const d = Math.hypot(dx,dy);
+        if(d < MOUSE_RADIUS){
+          const f = (MOUSE_RADIUS - d)/MOUSE_RADIUS;
+          p.x += (dx/d)*f*1.1;
+          p.y += (dy/d)*f*1.1;
+        }
+      });
+      // draw connections
+      for(let i=0;i<particles.length;i++){
+        for(let j=i+1;j<particles.length;j++){
+          const a=particles[i], b=particles[j];
+          const dx=a.x-b.x, dy=a.y-b.y;
+          const dist=Math.hypot(dx,dy);
+          if(dist<MAX_DIST){
+            const alpha = (1 - dist/MAX_DIST)*0.18;
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(0,255,136,${alpha})`;
+            ctx.lineWidth=0.7;
+            ctx.moveTo(a.x,a.y);
+            ctx.lineTo(b.x,b.y);
+            ctx.stroke();
+          }
+        }
+        // mouse line
+        const dxm = particles[i].x - mouse.x;
+        const dym = particles[i].y - mouse.y;
+        const dm = Math.hypot(dxm,dym);
+        if(dm < MOUSE_RADIUS*0.9){
+          const alpha = (1 - dm/MOUSE_RADIUS)*0.22;
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(0,255,136,${alpha})`;
+          ctx.lineWidth=0.9;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(mouse.x, mouse.y);
+          ctx.stroke();
+        }
+      }
+      // draw particles
+      particles.forEach(p=>{
+        const glowAlpha = 0.55 + Math.sin(p.pulse)*0.25;
+        // outer glow
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(0,255,136,${glowAlpha*0.18})`;
+        ctx.arc(p.x,p.y,p.r*3.2,0,Math.PI*2);
+        ctx.fill();
+        // core
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(255,255,255,${0.85})`;
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fill();
+        // inner green core occasionally
+        if(p.r>1.1){
+          ctx.beginPath();
+          ctx.fillStyle = `rgba(0,255,136,${glowAlpha})`;
+          ctx.arc(p.x,p.y,p.r*0.55,0,Math.PI*2);
+          ctx.fill();
+        }
+      });
+      requestAnimationFrame(step);
+    }
+    function onMouseMove(e){
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    }
+    function onMouseLeave(){ mouse.x=-9999; mouse.y=-9999; }
+    // init
+    init();
+    // need to handle resize: re-init to keep density
+    window.addEventListener('resize', init);
+    canvas.parentElement.addEventListener('mousemove', onMouseMove);
+    canvas.parentElement.addEventListener('mouseleave', onMouseLeave);
+    // touch
+    canvas.parentElement.addEventListener('touchmove', (e)=>{
+      if(e.touches[0]){
+        const rect=canvas.getBoundingClientRect();
+        mouse.x=e.touches[0].clientX-rect.left;
+        mouse.y=e.touches[0].clientY-rect.top;
+      }
+    }, {passive:true});
+    requestAnimationFrame(step);
+  })();
+
+  // --- Animated counters (hero metrics) ---
+  (() => {
+    const els = document.querySelectorAll('.text-xl.font-bold');
+    const obs = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting && !e.target.dataset.counted){
+          e.target.dataset.counted='1';
+          const raw = e.target.textContent.trim();
+          const numMatch = raw.match(/[\d,.]+/);
+          if(!numMatch) return;
+          const target = parseFloat(numMatch[0].replace(/,/g,''));
+          if(isNaN(target)) return;
+          let cur=0;
+          const steps=42;
+          const inc=target/steps;
+          const isFloat = raw.includes('.');
+          const hasComma = raw.includes(',');
+          const suffix = raw.replace(numMatch[0],'');
+          let i=0;
+          const id=setInterval(()=>{
+            i++; cur+=inc;
+            if(i>=steps){ cur=target; clearInterval(id); }
+            let out = isFloat ? cur.toFixed(1) : Math.round(cur).toLocaleString();
+            if(hasComma && !isFloat) out = Math.round(cur).toLocaleString();
+            e.target.textContent = out + suffix;
+          }, 28);
+        }
+      });
+    }, {threshold:0.6});
+    els.forEach(el=>obs.observe(el));
+  })();
+
+  // --- Header shadow on scroll (more robust) ---
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', ()=>{
+    if(!nav) return;
+    if(window.scrollY>16){ nav.classList.add('shadow-[0_8px_32px_rgba(0,0,0,0.45)]','bg-[#040507]/90'); }
+    else { nav.classList.remove('shadow-[0_8px_32px_rgba(0,0,0,0.45)]','bg-[#040507]/90'); }
+  }, {passive:true});
+</script>
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a38baf8319272950',t:'MTc4OTAxNDUwMg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
