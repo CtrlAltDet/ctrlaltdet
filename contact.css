@@ -1,0 +1,10 @@
+.contact-options{display:flex;flex-wrap:wrap;gap:12px;margin-top:27px}
+.contact-option{display:flex;align-items:center;gap:12px;min-width:225px;padding:14px 16px;background:#ebeae4;color:#17232c;font-size:11px;transition:background .2s}
+.contact-option:hover{background:#e2e3dc}
+.contact-option small{display:block;font:8px 'DM Mono',monospace;letter-spacing:.1em;color:#74817e;margin-bottom:3px}
+.contact-option b{font-size:11px}
+.contact-arrow{margin-left:auto;color:#759f62}
+.contact-symbol{font-size:18px;color:#759f62}
+.footer-contact{display:flex;gap:16px}
+.footer-contact a:hover{color:#adf27f}
+@media(max-width:650px){.contact-options{flex-direction:column}.contact-option{width:100%}.footer-contact{flex-direction:column;gap:2px}}
